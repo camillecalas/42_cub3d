@@ -6,11 +6,11 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:12:07 by baubigna          #+#    #+#             */
-/*   Updated: 2022/08/30 15:12:40 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:05:58 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3D.h"
 
 void	free_ptr(char **ptr)
 {
