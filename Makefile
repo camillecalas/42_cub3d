@@ -6,14 +6,17 @@
 #    By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 16:20:54 by baubigna          #+#    #+#              #
-#    Updated: 2022/08/30 18:05:38 by baubigna         ###   ########.fr        #
+#    Updated: 2022/08/31 14:12:09 by baubigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	cub3d
+NAME	=	cub3D
 
-SRCS	=	./srcs/main.c \
-			./srcs/get_next_line.c
+SRCS	=	./srcs/check_param.c \
+			./srcs/clean.c \
+			./srcs/get_next_line.c \
+			./srcs/init.c \
+			./srcs/main.c
 
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
