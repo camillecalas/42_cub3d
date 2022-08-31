@@ -63,8 +63,10 @@ void	ft_get_map_info(char *line, t_init *init)
 void	ft_open_map_file(char *filepath, t_init *init)
 {
 	int		fd;
+	int		n;
 	char	*line;
 
+	n = 0;
 	fd = open(filepath, O_DIRECTORY);
 	if (fd != -1)
 	{
@@ -80,6 +82,7 @@ void	ft_open_map_file(char *filepath, t_init *init)
 	line = get_next_line(fd);
 	while (line)
 	{
+		n++;
 		if (init->no && init->we && init->so && init->ea && init->f && init->c)
 			break ;
 		if (ft_strlen(line) == 1)
@@ -96,5 +99,5 @@ void	ft_open_map_file(char *filepath, t_init *init)
 		ft_putstr_fd("Error\nInvalid map informations\n", 2);
 		exit(0);
 	}
-	// ft_cpy_map()
+	ft_cpy_map(fd, init, filepath, n);
 }

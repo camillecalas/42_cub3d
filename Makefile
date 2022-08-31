@@ -1,22 +1,11 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/29 16:20:54 by baubigna          #+#    #+#              #
-#    Updated: 2022/08/31 14:12:09 by baubigna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	=	cub3D
 
 SRCS	=	./srcs/check_param.c \
 			./srcs/clean.c \
 			./srcs/get_next_line.c \
 			./srcs/init.c \
-			./srcs/main.c
+			./srcs/main.c \
+			./srcs/map.c
 
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
