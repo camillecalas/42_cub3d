@@ -54,6 +54,7 @@ int		ft_color_convert(int r, int g, int b);
 int		main(int ac, char **av);
 
 /* map.c */
+void	ft_check_map(t_init *init);
 void	ft_cpy_map(int fd, t_init *init, char *filepath, int n);
 
 #endif

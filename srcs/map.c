@@ -1,5 +1,10 @@
 #include "../include/cub3D.h"
 
+void	ft_check_map(t_init *init)
+{
+
+}
+
 void	ft_cpy_map(int fd, t_init *init, char *filepath, int n)
 {
 	char	*line;
@@ -28,4 +33,5 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath, int n)
 		i++;
 		line = get_next_line(fd);
 	}
+	ft_check_map(init);
 }
