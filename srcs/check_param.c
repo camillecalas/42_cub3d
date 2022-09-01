@@ -85,7 +85,7 @@ int	ft_check_color(char *line, size_t *i)
 	}
 	while (line[*i] > 47 && line[*i] < 58)
 	{
-		c = c * 10 + line[*i] - 48; 
+		c = c * 10 + line[*i] - 48;
 			(*i)++;
 	}
 	if (c < 0 || c > 255)

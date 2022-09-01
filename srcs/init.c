@@ -19,9 +19,9 @@ void	ft_get_map_info(char *line, t_init *init)
 	char	**elements;
 
 	elements = ft_split(line, " ");
-	if (ft_strcmp("NO", elements[0]) && ft_strcmp("WE", elements[0]) && 
-		ft_strcmp("SO", elements[0]) && ft_strcmp("EA", elements[0]) &&
-		ft_strcmp("F", elements[0]) && ft_strcmp("C", elements[0]))
+	if (ft_strcmp("NO", elements[0]) && ft_strcmp("WE", elements[0])
+		&& ft_strcmp("SO", elements[0]) && ft_strcmp("EA", elements[0])
+		&& ft_strcmp("F", elements[0]) && ft_strcmp("C", elements[0]))
 	{
 		ft_putstr_fd("Error\nInvalid identifier\n", 2);
 		ft_free_split(elements);
@@ -93,8 +93,8 @@ void	ft_open_map_file(char *filepath, t_init *init)
 		ft_get_map_info(line, init);
 		line = get_next_line(fd);
 	}
-	if (init->no != 1 || init->we != 1 || init->so != 1 || init->ea != 1 ||
-		init->f != 1 || init->c != 1)
+	if (init->no != 1 || init->we != 1 || init->so != 1 || init->ea != 1
+		|| init->f != 1 || init->c != 1)
 	{
 		ft_putstr_fd("Error\nInvalid map informations\n", 2);
 		exit(0);
