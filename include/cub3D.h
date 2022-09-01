@@ -1,11 +1,12 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+# define BUFFER_SIZE 1
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 
@@ -31,19 +32,12 @@ typedef struct s_game
 	double	sideDistY;
 	double	deltaDistX;
 	double	deltaDistY;
-	double	stepX;
-	double	stepY;
 	double	perpWallDist;
 	double	time;
 	double	oldTime;
 	double	frameTime;
 	double	moveSpeed;
 	double	rotSpeed;
-	int		lineHeight;
-	int		h;
-	int		w;
-	int		hit;
-	int		side;
 }	t_game;
 
 typedef struct s_init
@@ -72,6 +66,9 @@ int		ft_check_color(char *line, size_t *i);
 void	ft_free_split(char **split);
 void	ft_clean_all(t_init *init);
 
+/* display.c */
+void	ft_draw_vertical_line(t_init *init);
+
 /* get_next_line.c */
 void	free_ptr(char **ptr);
 char	*join_line(int nl_pos, char **wip);
@@ -84,6 +81,9 @@ void	ft_init_dir(t_init *init, char c);
 void	ft_init_init(t_init *init);
 void	ft_get_map_info(char *line, t_init *init);
 void	ft_open_map_file(char *filepath, t_init *init);
+
+/* loop.c */
+void	ft_game_loop(t_init *init);
 
 /* main.c */
 int		ft_color_convert(int r, int g, int b);

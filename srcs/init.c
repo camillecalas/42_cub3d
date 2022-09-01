@@ -61,7 +61,7 @@ void	ft_init_init(t_init *init)
 	init->textures[2].img = NULL;
 	init->textures[3].img = NULL;
 	init->game = ft_calloc(1, sizeof(t_game));
-	if(!init->game)
+	if (!init->game)
 	{
 		ft_clean_all(init);
 		ft_putstr_fd("Error\nMemory could not be allocated\n", 2);
@@ -69,8 +69,6 @@ void	ft_init_init(t_init *init)
 	}
 	init->game->time = 0;
 	init->game->oldTime = 0;
-	init->game->h = 1080;
-	init->game->w = 1920;
 }
 
 void	ft_get_map_info(char *line, t_init *init)
