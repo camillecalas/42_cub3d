@@ -15,7 +15,13 @@ void	ft_check_direction(t_init *init)
 		{
 			if (init->map[i][j] == 'S' || init->map[i][j] == 'N'
 				|| init->map[i][j] == 'W' || init->map[i][j] == 'E')
+			{
+				init->game->posX = j;
+				init->game->posY = i;
+				ft_init_dir(init, init->map[i][j]);
+				ft_init_plane(init, init->map[i][j]);
 				nswe++;
+			}
 			j++;
 		}
 		i++;

@@ -1,5 +1,53 @@
 #include "../include/cub3D.h"
 
+void	ft_init_plane(t_init *init, char c)
+{
+	if (c == 'N')
+	{
+		init->game->planeX = 1;
+		init->game->planeY = 0;
+	}
+	else if (c == 'W')
+	{
+		init->game->planeX = 0;
+		init->game->planeY = 1;
+	}
+	else if (c == 'S')
+	{
+		init->game->planeX = -1;
+		init->game->planeY = 0;
+	}
+	else if (c == 'E')
+	{
+		init->game->planeX = 0;
+		init->game->planeY = -1;
+	}
+}
+
+void	ft_init_dir(t_init *init, char c)
+{
+	if (c == 'N')
+	{
+		init->game->dirX = 0;
+		init->game->dirY = 1;
+	}
+	else if (c == 'W')
+	{
+		init->game->dirX = -1;
+		init->game->dirY = 0;
+	}
+	else if (c == 'S')
+	{
+		init->game->dirX = 0;
+		init->game->dirY = -1;
+	}
+	else if (c == 'E')
+	{
+		init->game->dirX = 1;
+		init->game->dirY = 0;
+	}
+}
+
 void	ft_init_init(t_init *init)
 {
 	init->no = 0;
@@ -12,6 +60,17 @@ void	ft_init_init(t_init *init)
 	init->textures[1].img = NULL;
 	init->textures[2].img = NULL;
 	init->textures[3].img = NULL;
+	init->game = ft_calloc(1, sizeof(t_game));
+	if(!init->game)
+	{
+		ft_clean_all(init);
+		ft_putstr_fd("Error\nMemory could not be allocated\n", 2);
+		exit(0);
+	}
+	init->game->time = 0;
+	init->game->oldTime = 0;
+	init->game->h = 1080;
+	init->game->w = 1920;
 }
 
 void	ft_get_map_info(char *line, t_init *init)
