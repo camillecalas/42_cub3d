@@ -71,29 +71,29 @@ void	ft_check_close_map(t_init *init)
 		j = 0;
 		while (init->map[i][j])
 		{
-			if (init->map[i][j] == '0' || init->map[i][j] == 'S'
+		if (init->map[i][j] == '0' || init->map[i][j] == 'S'
 				|| init->map[i][j] == 'N' || init->map[i][j] == 'W'
 				|| init->map[i][j] == 'E')
 			{
 				i2 = i;
 				while (i2 >= 0 && init->map[i2][j] != '1'
-					&& init->map[i2][j] != ' ')
+					&& init->map[i2][j] != ' ' && ft_strcmp(init->map[i2], "")
+					&& init->map[i2][j])
 					i2--;
-				if (i2 < 0 || init->map[i2][j] == ' ')
+				if (i2 < 0 || init->map[i2][j] == ' '
+				|| !ft_strcmp(init->map[i2], "") || !init->map[i2][j])
 				{
-					printf("i: %d", i2);
-					printf("j: %d", j);
 					ft_putstr_fd("Error\nMap not closed\n", 2);
 					exit(0);
 				}
 				i2 = i;
 				while (init->map[i2][j] && init->map[i2][j] != '1'
-					&& init->map[i2][j] != ' ')
+					&& init->map[i2][j] != ' ' && ft_strcmp(init->map[i2], "")
+					&& init->map[i2][j])
 					i2++;
-				if (!init->map[i2] || init->map[i2][j] == ' ')
+				if (!init->map[i2] || init->map[i2][j] == ' '
+				|| !ft_strcmp(init->map[i2], "") || !init->map[i2][j])
 				{
-					printf("i: %d", i2);
-					printf("j: %d", j);
 					ft_putstr_fd("Error\nMap not closed\n", 2);
 					exit(0);
 				}
@@ -103,8 +103,6 @@ void	ft_check_close_map(t_init *init)
 					j2--;
 				if (j2 < 0 || init->map[i][j2] == ' ')
 				{
-					printf("i: %d", i);
-					printf("j: %d", j2);
 					ft_putstr_fd("Error\nMap not closed\n", 2);
 					exit(0);
 				}
@@ -115,8 +113,6 @@ void	ft_check_close_map(t_init *init)
 				if ((size_t)j2 == ft_strlen(init->map[i])
 					|| init->map[i][j2] == ' ')
 				{
-					printf("i: %d", i);
-					printf("j: %d", j2);
 					ft_putstr_fd("Error\nMap not closed\n", 2);
 					exit(0);
 				}
