@@ -24,8 +24,6 @@ int	main(int ac, char **av)
 		return (1);
 	ft_init_init(init);
 	ft_open_map_file(av[1], init);
-	while (*init->map)
-		printf("%s\n", *init->map++);
 	ft_game_loop(init);
 	return (0);
 }

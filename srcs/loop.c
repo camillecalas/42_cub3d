@@ -41,7 +41,7 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 	hit = 0;
 	while (!hit)
 	{
-		if (init->game->sideDistX < init->game->sideDistY)
+		if ((init->game->sideDistX && init->game->sideDistX < init->game->sideDistY) || !init->game->sideDistY)
 		{
 			init->game->sideDistX += init->game->deltaDistX;
 			init->game->mapX += stepX;
@@ -53,14 +53,11 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 			init->game->mapY += stepY;
 			*side = 1;
 		}
-		printf("mapX: %f\n", init->game->mapX);
-		printf("mapY: %f\n", init->game->mapY);
-		// if (init->map[(int)init->game->mapX][(int)init->game->mapY] == '1')
-		// 	hit++;
 		x = (int)init->game->mapX;
 		y = (int)init->game->mapY;
-		printf("map ici: %c\n", init->map[13][20]);
-		// printf("map ici: %c\n", init->map[y][x]);
+		printf("map[%d][%d]: %c\n", y, x, init->map[y][x]);
+		if (init->map[y][x] == '1')
+			hit++;
 	}
 	printf("mapX: %f\n", init->game->mapX);
 	printf("mapY: %f\n", init->game->mapY);
@@ -75,7 +72,7 @@ void	ft_game_loop(t_init *init)
 
 	while (1)
 	{
-		i = 480;
+		i = 480 * 2;
 		while (i < WIDTH)
 		{
 			init->game->cameraX = 2 * i / (double)WIDTH - 1;
@@ -109,13 +106,13 @@ void	ft_game_loop(t_init *init)
 			ft_dda(init, &side, stepx, stepy);
 			printf("side: %d\n", side);
 			if (!side)
-				init->game->perpWallDist = init->game->sideDistX
-					- init->game->deltaDistX;
+				init->game->perpWallDist = fabs(init->game->posX
+					- init->game->mapX);
 			else
-				init->game->perpWallDist = init->game->sideDistY
-					- init->game->deltaDistY;
+				init->game->perpWallDist = fabs(init->game->posY
+					- init->game->mapY);
 			printf("perpWallDist: %f\n", init->game->perpWallDist);
-			// ft_draw_vertical_line(init);
+			ft_draw_vertical_line(init);
 			break ;
 			i++;
 		}

@@ -10,7 +10,7 @@ void	ft_init_plane(t_init *init, char c)
 	else if (c == 'W')
 	{
 		init->game->planeX = 0;
-		init->game->planeY = 1;
+		init->game->planeY = -1;
 	}
 	else if (c == 'S')
 	{
@@ -20,7 +20,7 @@ void	ft_init_plane(t_init *init, char c)
 	else if (c == 'E')
 	{
 		init->game->planeX = 0;
-		init->game->planeY = -1;
+		init->game->planeY = 1;
 	}
 }
 
@@ -29,7 +29,7 @@ void	ft_init_dir(t_init *init, char c)
 	if (c == 'N')
 	{
 		init->game->dirX = 0;
-		init->game->dirY = 1;
+		init->game->dirY = -1;
 	}
 	else if (c == 'W')
 	{
@@ -39,7 +39,7 @@ void	ft_init_dir(t_init *init, char c)
 	else if (c == 'S')
 	{
 		init->game->dirX = 0;
-		init->game->dirY = -1;
+		init->game->dirY = 1;
 	}
 	else if (c == 'E')
 	{
