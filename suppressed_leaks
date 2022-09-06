@@ -17,8 +17,8 @@
 	fun:mlx_xpm_file_to_image
 }
 {
-	leak mlx_xpm_file_to_image
+	leak XFlush
 	Memcheck:Leak
 	...
-	fun:mlx_xpm_file_to_image
+	fun:XFlush
 }
