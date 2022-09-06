@@ -38,6 +38,10 @@ void	ft_clean_all(t_init *init)
 		free(init->textures[2].path);
 	if (init->textures[3].path)
 		free(init->textures[3].path);
+	if (init->fd != -1)
+		close(init->fd);
+	if (init)
+		free(init);
 }
 
 void	ft_error(char *msg, t_init *init)

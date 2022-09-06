@@ -138,7 +138,11 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath, int n)
 	{
 		init->map[i] = ft_strndup(line, 0, ft_strlen(line) - 1);
 		i++;
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	ft_check_map(init);
 }

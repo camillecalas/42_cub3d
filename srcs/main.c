@@ -29,7 +29,6 @@ void	ft_load_images(t_init *init)
 	ft_get_textures_address(init);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_init	*init;

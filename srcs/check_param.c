@@ -15,16 +15,19 @@ int	ft_check_scene(char *scene)
 void	ft_check_texture_parameters(char **elements, t_init *init)
 {
 	char	*path;
+	int		fd;
 
 	path = NULL;
 	if (elements[1])
 		path = ft_strndup(elements[1], 0, ft_strlen(elements[1]) - 1);
-	if (!elements[1] || elements[2] || open(path, O_RDONLY) == -1)
+	fd = open(path, O_RDONLY);
+	if (!elements[1] || elements[2] || fd == -1)
 	{
 		ft_free_split(elements);
 		free(path);
 		ft_error("Error\nInvalid texture information\n", init);
 	}
+	close(fd);
 	if (!ft_strcmp(elements[0], "NO"))
 	{
 		init->textures[0].orientation = NORTH;

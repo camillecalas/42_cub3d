@@ -56,6 +56,7 @@ void	ft_init_init(t_init *init)
 	init->ea = 0;
 	init->f = 0;
 	init->c = 0;
+	init->fd = -1;
 	init->textures[0].img = NULL;
 	init->textures[1].img = NULL;
 	init->textures[2].img = NULL;
@@ -114,18 +115,17 @@ void	ft_get_map_info(char *line, t_init *init)
 
 void	ft_open_map_file(char *filepath, t_init *init)
 {
-	int		fd;
 	int		n;
 	char	*line;
 
 	n = 0;
-	fd = open(filepath, O_DIRECTORY);
-	if (fd != -1)
+	init->fd = open(filepath, O_DIRECTORY);
+	if (init->fd != -1)
 		ft_error("Error\nMap cannot be a directory\n", init);
-	fd = open(filepath, O_RDONLY);
-	if (fd == -1)
+	init->fd = open(filepath, O_RDONLY);
+	if (init->fd == -1)
 		ft_error("Error\nInvalid map file\n", init);
-	line = get_next_line(fd);
+	line = get_next_line(init->fd);
 	while (line)
 	{
 		n++;
@@ -133,14 +133,18 @@ void	ft_open_map_file(char *filepath, t_init *init)
 			break ;
 		if (ft_strlen(line) == 1)
 		{
-			line = get_next_line(fd);
+			line = get_next_line(init->fd);
 			continue ;
 		}
 		ft_get_map_info(line, init);
-		line = get_next_line(fd);
+		if (line)
+			free(line);
+		line = get_next_line(init->fd);
 	}
+	if (line)
+		free(line);
 	if (init->no != 1 || init->we != 1 || init->so != 1 || init->ea != 1
 		|| init->f != 1 || init->c != 1)
 		ft_error("Error\nInvalid map informations\n", init);
-	ft_cpy_map(fd, init, filepath, n);
+	ft_cpy_map(init->fd, init, filepath, n);
 }

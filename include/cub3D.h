@@ -61,6 +61,7 @@ typedef struct s_init
 {
 	void		*mlx;
 	void		*win;
+	int			fd;
 	int			no;
 	int			so;
 	int			we;

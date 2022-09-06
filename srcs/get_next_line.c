@@ -54,6 +54,8 @@ char	*read_line(int fd, char **wip, char *buf)
 		*wip = temp;
 		nl = ft_strchr(*wip, '\n');
 	}
+	if (temp)
+			free(temp);
 	return (join_line(nl - *wip + 1, wip));
 }
 
