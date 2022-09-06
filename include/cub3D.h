@@ -6,13 +6,30 @@
 # define HEIGHT 1080
 
 # include <fcntl.h>
+# include <mlx.h>
 # include <math.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 
+typedef enum	orientation
+{
+	NORTH,
+	WEST,
+	SOUTH,
+	EAST
+} t_orientation;
+
 typedef struct s_texture
 {
-	void	*img;
+	t_orientation	orientation;
+	int				width;
+	int				height;
+	int				*address;
+	int				bits_per_pixel;
+	int				size_line;
+	int				endian;
+	char			*path;
+	void			*img;
 }	t_texture;
 
 typedef struct s_game
@@ -42,6 +59,8 @@ typedef struct s_game
 
 typedef struct s_init
 {
+	void		*mlx;
+	void		*win;
 	int			no;
 	int			so;
 	int			we;
@@ -57,14 +76,15 @@ typedef struct s_init
 
 /* check_param.c */
 int		ft_check_scene(char *scene);
-void	ft_check_texture_parameters(char **elements);
-void	ft_ignore_spaces_and_comma(char *line, size_t *i);
+void	ft_check_texture_parameters(char **elements, t_init *init);
+void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init);
 void	ft_check_color_parameters(char *line, t_init *init);
-int		ft_check_color(char *line, size_t *i);
+int		ft_check_color(char *line, size_t *i, t_init *init);
 
 /* clean.c */
 void	ft_free_split(char **split);
 void	ft_clean_all(t_init *init);
+void	ft_error(char *msg, t_init *init);
 
 /* display.c */
 void	ft_draw_vertical_line(t_init *init);

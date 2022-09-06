@@ -20,4 +20,29 @@ void	ft_clean_all(t_init *init)
 		ft_free_split(init->map);
 	if (init->game)
 		free(init->game);
+	if (init->win)
+		mlx_destroy_window(init->mlx, init->win);
+	if (init->textures[0].img)
+		mlx_destroy_image(init->mlx, init->textures[0].img);
+	if (init->textures[1].img)
+		mlx_destroy_image(init->mlx, init->textures[1].img);
+	if (init->textures[2].img)
+		mlx_destroy_image(init->mlx, init->textures[2].img);
+	if (init->textures[3].img)
+		mlx_destroy_image(init->mlx, init->textures[3].img);
+	if (init->textures[0].path)
+		free(init->textures[0].path);
+	if (init->textures[1].path)
+		free(init->textures[1].path);
+	if (init->textures[2].path)
+		free(init->textures[2].path);
+	if (init->textures[3].path)
+		free(init->textures[3].path);
+}
+
+void	ft_error(char *msg, t_init *init)
+{
+	ft_putstr_fd(msg, 2);
+	ft_clean_all(init);
+	exit(0);
 }

@@ -12,31 +12,49 @@ int	ft_check_scene(char *scene)
 	return (0);
 }
 
-void	ft_check_texture_parameters(char **elements)
+void	ft_check_texture_parameters(char **elements, t_init *init)
 {
 	char	*path;
 
+	path = NULL;
 	if (elements[1])
 		path = ft_strndup(elements[1], 0, ft_strlen(elements[1]) - 1);
 	if (!elements[1] || elements[2] || open(path, O_RDONLY) == -1)
 	{
-		ft_putstr_fd("Error\nInvalid texture information\n", 2);
 		ft_free_split(elements);
 		free(path);
-		exit(0);
+		ft_error("Error\nInvalid texture information\n", init);
 	}
-	free(path);
+	if (!ft_strcmp(elements[0], "NO"))
+	{
+		init->textures[0].orientation = NORTH;
+		init->textures[0].path = ft_strdup(path);
+	}
+	if (!ft_strcmp(elements[0], "WE"))
+	{
+		init->textures[1].orientation = WEST;
+		init->textures[1].path = ft_strdup(path);
+	}
+	if (!ft_strcmp(elements[0], "SO"))
+	{
+		init->textures[2].orientation = SOUTH;
+		init->textures[2].path = ft_strdup(path);
+	}
+	if (!ft_strcmp(elements[0], "EA"))
+	{
+		init->textures[3].orientation = EAST;
+		init->textures[3].path = ft_strdup(path);
+	}
+	if (elements[1])
+		free(path);
 }
 
-void	ft_ignore_spaces_and_comma(char *line, size_t *i)
+void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init)
 {
 	while (line[*i] == ' ')
 		(*i)++;
 	if (line[*i] != ',')
-	{
-		ft_putstr_fd("Error\nInvalid color informations\n", 2);
-		exit(0);
-	}
+		ft_error("Error\nInvalid color informations\n", init);
 	(*i)++;
 	while (line[*i] == ' ')
 		(*i)++;
@@ -54,16 +72,13 @@ void	ft_check_color_parameters(char *line, t_init *init)
 	{
 		while (line[i] == ' ')
 			i++;
-		r = ft_check_color(line, &i);
-		ft_ignore_spaces_and_comma(line, &i);
-		g = ft_check_color(line, &i);
-		ft_ignore_spaces_and_comma(line, &i);
-		b = ft_check_color(line, &i);
+		r = ft_check_color(line, &i, init);
+		ft_ignore_spaces_and_comma(line, &i, init);
+		g = ft_check_color(line, &i, init);
+		ft_ignore_spaces_and_comma(line, &i, init);
+		b = ft_check_color(line, &i, init);
 		if (line[i] != '\n')
-		{
-			ft_putstr_fd("Error\nInvalid color informations\n", 2);
-			exit(0);
-		}
+			ft_error("Error\nInvalid color informations\n", init);
 		else
 			break ;
 	}
@@ -73,25 +88,19 @@ void	ft_check_color_parameters(char *line, t_init *init)
 		init->floor_hexa = ft_color_convert(r, g, b);
 }
 
-int	ft_check_color(char *line, size_t *i)
+int	ft_check_color(char *line, size_t *i, t_init *init)
 {
 	int	c;
 
 	c = 0;
 	if (line[*i] < 48 || line[*i] > 57)
-	{
-		ft_putstr_fd("Error\nInvalid color informations\n", 2);
-		exit(0);
-	}
+		ft_error("Error\nInvalid color informations\n", init);
 	while (line[*i] > 47 && line[*i] < 58)
 	{
 		c = c * 10 + line[*i] - 48;
 			(*i)++;
 	}
 	if (c < 0 || c > 255)
-	{
-		ft_putstr_fd("Error\nInvalid color informations\n", 2);
-		exit(0);
-	}
+		ft_error("Error\nInvalid color informations\n", init);
 	return (c);
 }

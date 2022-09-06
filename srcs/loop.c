@@ -41,7 +41,8 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 	hit = 0;
 	while (!hit)
 	{
-		if ((init->game->sideDistX && init->game->sideDistX < init->game->sideDistY) || !init->game->sideDistY)
+		if ((init->game->deltaDistX && init->game->deltaDistX < init->game->deltaDistY) || !init->game->deltaDistY)
+		// if ((init->game->sideDistX && init->game->sideDistX < init->game->sideDistY) || !init->game->sideDistY)
 		{
 			init->game->sideDistX += init->game->deltaDistX;
 			init->game->mapX += stepX;
@@ -72,7 +73,7 @@ void	ft_game_loop(t_init *init)
 
 	while (1)
 	{
-		i = 480 * 2;
+		i = 480;
 		while (i < WIDTH)
 		{
 			init->game->cameraX = 2 * i / (double)WIDTH - 1;
