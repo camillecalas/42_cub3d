@@ -2,13 +2,12 @@
 # define CUB3D_H
 
 # define BUFFER_SIZE 1
-# define WIDTH 1920
-# define HEIGHT 1080
 
 # include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include "../libft/libft.h"
 
 typedef enum	orientation
@@ -61,6 +60,11 @@ typedef struct s_init
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
+	int			*addr;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
 	int			fd;
 	int			no;
 	int			so;
@@ -68,6 +72,8 @@ typedef struct s_init
 	int			ea;
 	int			f;
 	int			c;
+	int			width;
+	int			height;
 	int			floor_hexa;
 	int			ceiling_hexa;
 	char		**map;
@@ -84,11 +90,11 @@ int		ft_check_color(char *line, size_t *i, t_init *init);
 
 /* clean.c */
 void	ft_free_split(char **split);
-void	ft_clean_all(t_init *init);
+int		ft_clean_all(t_init *init);
 void	ft_error(char *msg, t_init *init);
 
 /* display.c */
-void	ft_draw_vertical_line(t_init *init);
+void	ft_draw_vertical_line(t_init *init, int i);
 
 /* get_next_line.c */
 void	free_ptr(char **ptr);
@@ -104,14 +110,21 @@ void	ft_get_map_info(char *line, t_init *init);
 void	ft_open_map_file(char *filepath, t_init *init);
 
 /* loop.c */
-void	ft_game_loop(t_init *init);
+int		ft_game_loop(t_init *init);
 
 /* main.c */
 int		ft_color_convert(int r, int g, int b);
+void	ft_print_map(t_init *init);
 int		main(int ac, char **av);
 
 /* map.c */
 void	ft_check_map(t_init *init);
 void	ft_cpy_map(int fd, t_init *init, char *filepath, int n);
+
+/* mlx.c */
+void	ft_get_textures_address(t_init *init);
+void	ft_load_textures(t_init *init);
+int		ft_key_hook(int keycode, t_init *init);
+void	ft_init_mlx(t_init *init);
 
 #endif

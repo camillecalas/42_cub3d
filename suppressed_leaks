@@ -22,3 +22,15 @@
 	...
 	fun:XFlush
 }
+{
+	leak mlx_loop
+	Memcheck:Leak
+	...
+	fun:mlx_loop
+}
+{
+	leak mlx_new_image
+	Memcheck:Leak
+	...
+	fun:mlx_new_image
+}

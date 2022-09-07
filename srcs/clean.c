@@ -14,22 +14,27 @@ void	ft_free_split(char **split)
 	free(split);
 }
 
-void	ft_clean_all(t_init *init)
+int	ft_clean_all(t_init *init)
 {
 	if (init->map)
 		ft_free_split(init->map);
 	if (init->game)
 		free(init->game);
-	if (init->win)
-		mlx_destroy_window(init->mlx, init->win);
-	if (init->textures[0].img)
-		mlx_destroy_image(init->mlx, init->textures[0].img);
-	if (init->textures[1].img)
-		mlx_destroy_image(init->mlx, init->textures[1].img);
-	if (init->textures[2].img)
-		mlx_destroy_image(init->mlx, init->textures[2].img);
-	if (init->textures[3].img)
-		mlx_destroy_image(init->mlx, init->textures[3].img);
+	// if (init->win)
+	// 	mlx_destroy_window(init->mlx, init->win);
+	// if (init->textures[0].img)
+	// 	mlx_destroy_image(init->mlx, init->textures[0].img);
+	// if (init->textures[1].img)
+	// 	mlx_destroy_image(init->mlx, init->textures[1].img);
+	// if (init->textures[2].img)
+	// 	mlx_destroy_image(init->mlx, init->textures[2].img);
+	// if (init->textures[3].img)
+	// 	mlx_destroy_image(init->mlx, init->textures[3].img);
+	// if (init->mlx && init->win)
+	// {
+	// 	mlx_destroy_window(init->mlx, init->win);
+	free(init->mlx);
+	// }
 	if (init->textures[0].path)
 		free(init->textures[0].path);
 	if (init->textures[1].path)
@@ -42,6 +47,7 @@ void	ft_clean_all(t_init *init)
 		close(init->fd);
 	if (init)
 		free(init);
+	return (0);
 }
 
 void	ft_error(char *msg, t_init *init)

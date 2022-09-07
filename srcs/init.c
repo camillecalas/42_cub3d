@@ -61,6 +61,8 @@ void	ft_init_init(t_init *init)
 	init->textures[1].img = NULL;
 	init->textures[2].img = NULL;
 	init->textures[3].img = NULL;
+	init->img = NULL;
+	init->win = NULL;
 	init->game = ft_calloc(1, sizeof(t_game));
 	if (!init->game)
 		ft_error("Error\nMemory for init->game could not be allocated\n", init);

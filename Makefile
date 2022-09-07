@@ -7,6 +7,7 @@ SRCS	=	./srcs/check_param.c \
 			./srcs/init.c \
 			./srcs/loop.c \
 			./srcs/main.c \
+			./srcs/mlx.c \
 			./srcs/map.c
 
 OBJS	=	${SRCS:.c=.o}
