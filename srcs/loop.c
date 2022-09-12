@@ -127,7 +127,7 @@ int	ft_game_loop(t_init *init)
 			ft_perp_dist(init, side, stepx, stepy);
 			// printf("side: %d\n", side);
 			// printf("perpWallDist: %f\n", init->game->perpWallDist);
-			ft_draw_vertical_line(init, i);
+			ft_draw_vertical_line(init, i, side);
 			// break ;
 			i++;
 		}

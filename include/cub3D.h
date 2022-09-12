@@ -56,6 +56,11 @@ typedef struct s_game
 	double	rotSpeed;
 }	t_game;
 
+typedef struct s_t
+{
+	int	dir;
+}	t_t;
+
 typedef struct s_init
 {
 	void		*mlx;
@@ -79,6 +84,7 @@ typedef struct s_init
 	char		**map;
 	t_game		*game;
 	t_texture	textures[4];
+	t_t			t;
 }	t_init;
 
 /* check_param.c */
@@ -94,7 +100,7 @@ int		ft_clean_all(t_init *init);
 void	ft_error(char *msg, t_init *init);
 
 /* display.c */
-void	ft_draw_vertical_line(t_init *init, int i);
+void	ft_draw_vertical_line(t_init *init, int i, int side);
 
 /* get_next_line.c */
 void	free_ptr(char **ptr);
