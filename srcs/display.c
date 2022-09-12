@@ -17,13 +17,13 @@ void	ft_draw_vertical_line(t_init *init, int i)
 	j = 0;
 	while (j < linelow)
 	{
-		init->addr[j * init->size_line / 4 + i] = init->floor_hexa;
+		init->addr[j * init->size_line / 4 + i] = init->ceiling_hexa;
 		j++;
 	}
 	j = linehigh;
 	while (j < init->height)
 	{
-		init->addr[j * init->size_line / 4 + i] = init->ceiling_hexa;
+		init->addr[j * init->size_line / 4 + i] = init->floor_hexa;
 		j++;
 	}
 	mlx_put_image_to_window(init->mlx, init->win, init->img, 0, 0);

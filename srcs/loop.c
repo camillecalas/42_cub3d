@@ -78,7 +78,7 @@ void	ft_perp_dist(t_init *init, int side, int stepx, int stepy)
 				(1 - stepy / 2) / init->game->rayDirY;
 		// init->game->perpWallDist = fabs(init->game->posY
 		// 		- init->game->mapY);
-	printf("perp: %f\n", init->game->perpWallDist);
+	// printf("perp: %f\n", init->game->perpWallDist);
 }
 
 int	ft_game_loop(t_init *init)
