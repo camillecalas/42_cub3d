@@ -33,7 +33,7 @@ int	ft_clean_all(t_init *init)
 	// if (init->mlx && init->win)
 	// {
 	// 	mlx_destroy_window(init->mlx, init->win);
-	free(init->mlx);
+	// free(init->mlx);
 	// }
 	if (init->textures[0].path)
 		free(init->textures[0].path);
@@ -47,6 +47,8 @@ int	ft_clean_all(t_init *init)
 		close(init->fd);
 	if (init)
 		free(init);
+	(void)init;
+	exit(0);
 	return (0);
 }
 
@@ -54,5 +56,4 @@ void	ft_error(char *msg, t_init *init)
 {
 	ft_putstr_fd(msg, 2);
 	ft_clean_all(init);
-	exit(0);
 }

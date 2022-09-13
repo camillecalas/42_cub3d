@@ -44,7 +44,7 @@ void	ft_load_textures(t_init *init)
 int	ft_key_hook(int keycode, t_init *init)
 {
 	if (keycode == 65307)
-		ft_error("Quitting game\n", init);
+		ft_error("", init);
 	return (0);
 }
 

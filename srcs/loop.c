@@ -58,12 +58,9 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 		}
 		x = (int)init->game->mapX;
 		y = (int)init->game->mapY;
-		// printf("map[%d][%d]: %c\n", y, x, init->map[y][x]);
 		if (init->map[y][x] == '1')
 			hit++;
 	}
-	// printf("mapX: %f\n", init->game->mapX);
-	// printf("mapY: %f\n", init->game->mapY);
 }
 
 void	ft_perp_dist(t_init *init, int side, int stepx, int stepy)
@@ -78,7 +75,6 @@ void	ft_perp_dist(t_init *init, int side, int stepx, int stepy)
 				(1 - stepy / 2) / init->game->rayDirY;
 		// init->game->perpWallDist = fabs(init->game->posY
 		// 		- init->game->mapY);
-	// printf("perp: %f\n", init->game->perpWallDist);
 }
 
 int	ft_game_loop(t_init *init)
@@ -88,51 +84,34 @@ int	ft_game_loop(t_init *init)
 	double	stepx;
 	double	stepy;
 
-	// while (1)
-	// {
-		i = 0;
-		while (i < init->width)
-		{
-			init->game->cameraX = 2 * i / (double)init->width - 1;
-			init->game->rayDirX = init->game->dirX + init->game->planeX
-				* init->game->cameraX;
-			init->game->rayDirY = init->game->dirY + init->game->planeY
-				* init->game->cameraX;
-			init->game->mapX = init->game->posX;
-			init->game->mapY = init->game->posY;
-		// printf("mapX: %f\n", init->game->mapX);
-			// printf("mapY: %f\n", init->game->mapY);
-			// printf("rayDirX: %f\n", init->game->rayDirX);
-			// printf("rayDirY: %f\n", init->game->rayDirY);
-			if (!init->game->rayDirX)
-				init->game->deltaDistX = 0;
-			else
-				init->game->deltaDistX = fabs(sqrt(pow(init->game->rayDirX, 2) \
-				+ pow(init->game->rayDirY, 2)) / init->game->rayDirX);
-			// printf("deltaDistX: %f\n", init->game->deltaDistX);
-			if (!init->game->rayDirY)
-				init->game->deltaDistY = 0;
-			else
-				init->game->deltaDistY = fabs(sqrt(pow(init->game->rayDirX, 2) \
-				+ pow(init->game->rayDirY, 2)) / init->game->rayDirY);
-			// printf("deltaDistY: %f\n", init->game->deltaDistY);
-			init->game->sideDistX = init->game->deltaDistX;
-			init->game->sideDistY = init->game->deltaDistY;
-			ft_step_and_sidedist(init, &stepx, &stepy);
-			// printf("sideDistX: %f\n", init->game->sideDistX);
-			// printf("sideDistY: %f\n", init->game->sideDistY);
-			// printf("stepX: %f\n", stepx);
-			// printf("stepY: %f\n", stepy);
-			ft_dda(init, &side, stepx, stepy);
-			ft_perp_dist(init, side, stepx, stepy);
-			// printf("side: %d\n", side);
-			// printf("perpWallDist: %f\n", init->game->perpWallDist);
-			ft_draw_vertical_line(init, i, side);
-			// break ;
-			i++;
-		}
-	// mlx_put_image_to_window(init->mlx, init->win, init->img, 0, 0);
-	// 	break ;
-	// }
+	i = 0;
+	while (i < init->width)
+	{
+		init->game->cameraX = 2 * i / (double)init->width - 1;
+		init->game->rayDirX = init->game->dirX + init->game->planeX
+			* init->game->cameraX;
+		init->game->rayDirY = init->game->dirY + init->game->planeY
+			* init->game->cameraX;
+		init->game->mapX = init->game->posX;
+		init->game->mapY = init->game->posY;
+		if (!init->game->rayDirX)
+			init->game->deltaDistX = 0;
+		else
+			init->game->deltaDistX = fabs(sqrt(pow(init->game->rayDirX, 2) \
+			+ pow(init->game->rayDirY, 2)) / init->game->rayDirX);
+		if (!init->game->rayDirY)
+			init->game->deltaDistY = 0;
+		else
+			init->game->deltaDistY = fabs(sqrt(pow(init->game->rayDirX, 2) \
+			+ pow(init->game->rayDirY, 2)) / init->game->rayDirY);
+		init->game->sideDistX = init->game->deltaDistX;
+		init->game->sideDistY = init->game->deltaDistY;
+		ft_step_and_sidedist(init, &stepx, &stepy);
+		ft_dda(init, &side, stepx, stepy);
+		ft_perp_dist(init, side, stepx, stepy);
+		ft_draw_vertical_line(init, i, side);
+		i++;
+	}
+	mlx_put_image_to_window(init->mlx, init->win, init->img, 0, 0);
 	return (0);
 }

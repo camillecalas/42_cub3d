@@ -55,19 +55,6 @@ void	ft_which_texture(t_init *init, int side)
 void	ft_draw_walls(t_init *init, int i, int j, int side)
 {
 	ft_which_texture(init, side);
-	// if (init->t.dir == 0)
-	// 	col = ft_color_convert(0, 255, 255);
-	// else if (init->t.dir == 1)
-	// 	col = ft_color_convert(255, 247, 0);
-	// else if (init->t.dir == 2)
-	// 	col = ft_color_convert(239, 20, 255);
-	// else if (init->t.dir == 3)
-	// 	col = ft_color_convert(0, 255, 247);
-	// while (j <= init->game->linehigh)
-	// {
-	// 	init->addr[j * init->size_line / 4 + i] = col;
-	// 	j++;
-	// }
 	while (j <= init->game->linehigh)
 	{
 		init->t.y = (int)init->t.pos & (init->textures[init->t.dir].height - 1);
@@ -103,5 +90,4 @@ void	ft_draw_vertical_line(t_init *init, int i, int side)
 		init->addr[j * init->size_line / 4 + i] = init->floor_hexa;
 		j++;
 	}
-	mlx_put_image_to_window(init->mlx, init->win, init->img, 0, 0);
 }
