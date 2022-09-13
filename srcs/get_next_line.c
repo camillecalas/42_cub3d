@@ -1,76 +1,157 @@
 #include "../include/cub3D.h"
 
-void	free_ptr(char **ptr)
+size_t	ft_strlen2(char *s)
 {
-	if (*ptr != NULL)
-	{
-		free(*ptr);
-		ptr = NULL;
-	}
+	size_t	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
-char	*join_line(int nl_pos, char **wip)
+char	*ft_strchr2(char *str, int c)
 {
-	char	*ret;
-	char	*temp;
+	int	i;
 
-	temp = NULL;
-	if (nl_pos < 1)
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] != '\0')
 	{
-		if (**wip == '\0')
+		if (str[i] == (char) c)
+			return ((char *) str);
+		i++;
+	}
+	return (NULL);
+}
+
+char	*ft_strjoin2(char *line_wip, char *buff)
+{
+	char		*dest;
+	size_t		i;
+	size_t		j;
+
+	i = 0;
+	j = 0;
+
+	if (!line_wip)
+	{
+		line_wip = malloc(sizeof(char) * 1);
+		line_wip[0] = '\0';
+	}
+	if (!line_wip || !buff)
+		return (NULL);
+	dest = malloc(sizeof(char) * (ft_strlen2(line_wip) + ft_strlen2(buff) + 1));
+	if (!dest)
+		return (NULL);
+	while (line_wip[i] != '\0')
+	{
+		dest[i] = line_wip[i];
+		i++;
+	}
+	while (buff[j] != '\0')
+	{
+		dest[i] = buff[j];
+		i++;
+		j++;
+	}
+	dest[ft_strlen2(line_wip) + ft_strlen2(buff)] = '\0';
+	free (line_wip);
+	return (dest);
+}
+
+char	*ft_line(char *line_wip)
+{
+	char	*str;
+	int			i;
+
+	i = 0;
+	if (line_wip[i] == '\0')
+		return (NULL);
+	while (line_wip[i] && line_wip[i] != '\n')
+		i++;
+	str = malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (line_wip[i] && line_wip[i] != '\n')
+	{
+		str[i] = line_wip[i];
+		i++;
+	}
+	if (line_wip[i] == '\n')
+	{
+		str[i] = line_wip[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_new_start(char	*line_wip)
+{
+	char	*str;
+	int			i;
+	int			j;
+
+	i = 0;
+	j = 0;
+	while (line_wip[i] && line_wip[i] != '\n')
+		i++;
+	if (line_wip[i] == '\0')
+	{
+		free(line_wip);
+		return (NULL);
+	}	
+	str = malloc(sizeof(char) * (ft_strlen2(line_wip) - i + 1));
+	if (!str)
+		return (NULL);
+	i++;
+	while (line_wip[i])
+		str[j++] = line_wip[i++];
+	str[j] = '\0';
+	free(line_wip);
+	return (str);
+}
+
+char	*ft_read_fd(int fd, char *line_wip)
+{
+	char	*buff;
+	int		bits;
+
+	bits = 1;
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (NULL);
+	while (!ft_strchr2(line_wip, '\n') && bits > 0)
+	{
+		bits = read(fd, buff, BUFFER_SIZE);
+		if (bits == -1)
 		{
-			free(*wip);
-			*wip = NULL;
+			free (buff);
 			return (NULL);
 		}
-		ret = *wip;
-		*wip = NULL;
-		return (ret);
+		buff[bits] = '\0';
+		line_wip = ft_strjoin2(line_wip, buff);
 	}
-	temp = ft_substr(*wip, nl_pos, BUFFER_SIZE);
-	ret = *wip;
-	ret[nl_pos] = '\0' ;
-	*wip = temp;
-	return (ret);
-}
-
-char	*read_line(int fd, char **wip, char *buf)
-{
-	ssize_t	bytes_read;
-	char	*temp;
-	char	*nl;
-
-	nl = ft_strchr(*wip, '\n');
-	temp = NULL;
-	bytes_read = 0;
-	while (nl == NULL)
-	{
-		bytes_read = read(fd, buf, BUFFER_SIZE);
-		if (bytes_read < 1)
-			return (join_line(bytes_read, wip));
-		buf[bytes_read] = '\0';
-		temp = ft_strjoin(*wip, buf);
-		free_ptr(wip);
-		*wip = ft_strdup(temp);
-		nl = ft_strchr(*wip, '\n');
-	}
-	return (join_line(nl - *wip + 1, wip));
+	free (buff);
+	return (line_wip);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*wip[12288 + 1];
-	char		*buf;
 	char		*line;
+	static char	*line_wip;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || fd > 12288)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
+	line_wip = ft_read_fd(fd, line_wip);
+	if (!line_wip)
 		return (NULL);
-	if (!wip[fd])
-		wip[fd] = ft_strdup("");
-	line = read_line(fd, &wip[fd], buf);
-	free_ptr(&buf);
+	line = ft_line(line_wip);
+	line_wip = ft_new_start(line_wip);
 	return (line);
 }

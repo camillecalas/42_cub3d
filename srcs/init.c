@@ -135,6 +135,8 @@ void	ft_open_map_file(char *filepath, t_init *init)
 			break ;
 		if (ft_strlen(line) == 1)
 		{
+			if (line)
+				free(line);
 			line = get_next_line(init->fd);
 			continue ;
 		}

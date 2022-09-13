@@ -121,10 +121,16 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath, int n)
 	i = 0;
 	line = get_next_line(fd);
 	while (ft_strlen(line) == 1)
+	{
+		if (line)
+			free(line);
 		line = get_next_line(fd);
+	}
 	nb = 0;
 	while (line)
 	{
+		if (line)
+			free(line);
 		nb++;
 		line = get_next_line(fd);
 	}
@@ -132,7 +138,13 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath, int n)
 	init->map = ft_calloc(nb + 1, sizeof(char *));
 	fd = open(filepath, O_RDONLY);
 	while (n--)
+	{
+		if (line)
+			free(line);
 		line = get_next_line(fd);
+	}
+	if (line)
+		free(line);	
 	line = get_next_line(fd);
 	while (nb--)
 	{

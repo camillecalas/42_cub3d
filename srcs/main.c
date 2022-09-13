@@ -29,7 +29,6 @@ int	main(int ac, char **av)
 	ft_init_init(init);
 	ft_open_map_file(av[1], init);
 	ft_init_mlx(init);
-	// ft_game_loop(init);
 	ft_clean_all(init);
 	return (0);
 }
