@@ -4,7 +4,7 @@ TO DO:
 
 - probleme de fisheye : perpWallDist ?
 
-- key hooks : ECS, croix, fleches, WASD
+- key hooks : ESC, croix, fleches, WASD
 
 - leaks : GNL, mlx
 
