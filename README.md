@@ -4,10 +4,6 @@ TO DO:
 
 - probleme de fisheye : perpWallDist ?
 
-- key hooks : fleches, WASD
-
-- mouvements
-
-- rotation de la camera
+- key hooks : fleches (rotation de la camera), WASD (mouvement)
 
 - test du parsing
