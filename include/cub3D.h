@@ -33,6 +33,8 @@ typedef struct s_texture
 
 typedef struct s_game
 {
+	int		linelow;
+	int		linehigh;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -58,7 +60,12 @@ typedef struct s_game
 
 typedef struct s_t
 {
-	int	dir;
+	int		dir;
+	int		x;
+	int		y;
+	double	wallX;
+	double	step;
+	double	pos;
 }	t_t;
 
 typedef struct s_init
@@ -81,6 +88,7 @@ typedef struct s_init
 	int			height;
 	int			floor_hexa;
 	int			ceiling_hexa;
+	int			line;
 	char		**map;
 	t_game		*game;
 	t_texture	textures[4];
