@@ -6,8 +6,6 @@ TO DO:
 
 - key hooks : fleches, WASD
 
-- leaks : GNL, mlx
-
 - mouvements
 
 - rotation de la camera
