@@ -2,6 +2,10 @@
 
 TO DO:
 
-- key hooks : fleches (rotation de la camera), WASD (mouvement)
+- rotation de la camera
 
 - test du parsing
+
+- invalid read sur invalid map
+
+- mouvement bloque dans certaines situations
