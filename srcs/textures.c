@@ -27,20 +27,18 @@ void	ft_check_map_line(t_init *init, int i, int j)
 	int	i2;
 
 	i2 = i;
-	while (i2 >= 0 && init->map[i2][j] != '1'
-		&& init->map[i2][j] != ' ' && ft_strcmp(init->map[i2], "")
-		&& init->map[i2][j])
+	while (i2 >= 0 && init->map[i2][j] != '1' && init->map[i2][j] != ' '
+		&& ft_strcmp(init->map[i2], ""))
 		i2--;
-	if (i2 < 0 || init->map[i2][j] == ' '
-	|| !ft_strcmp(init->map[i2], "") || !init->map[i2][j])
+	if (i2 < 0 || (init->map[i2][j] == ' ' || !ft_strcmp(init->map[i2], ""))
+		|| !init->map[i2][j])
 		ft_error("Error\nMap not closed\n", init);
 	i2 = i;
-	while (init->map[i2][j] && init->map[i2][j] != '1'
-		&& init->map[i2][j] != ' ' && ft_strcmp(init->map[i2], "")
-		&& init->map[i2][j])
+	while (init->map[i2][j] != '1' && init->map[i2][j] != ' '
+		&& ft_strcmp(init->map[i2], ""))
 		i2++;
 	if (!init->map[i2] || init->map[i2][j] == ' '
-	|| !ft_strcmp(init->map[i2], "") || !init->map[i2][j])
+		|| !ft_strcmp(init->map[i2], "") || !init->map[i2][j])
 		ft_error("Error\nMap not closed\n", init);
 }
 

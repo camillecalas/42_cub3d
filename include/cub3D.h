@@ -149,7 +149,10 @@ void	ft_open_map_file(char *filepath, t_init *init);
 int		main(int ac, char **av);
 
 /* map.c */
+void	ft_check_map_col(t_init *init, int i, int j);
+void	ft_check_close_map(t_init *init);
 void	ft_check_map(t_init *init);
+void	ft_cpy_map_lines(char *filepath, int fd, int nb, t_init *init);
 void	ft_cpy_map(int fd, t_init *init, char *filepath);
 
 /* mlx.c */
