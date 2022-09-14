@@ -3,20 +3,21 @@
 void	ft_step_texture(t_init *init)
 {
 	if (init->t.dir == 0)
-		init->t.step = 1.0 * init->textures[0].height / init->line;
+		init->t.step = 1.0 * init->textures[3].height / init->line;
 	else if (init->t.dir == 1)
 		init->t.step = 1.0 * init->textures[1].height / init->line;
 	if (init->t.dir == 2)
 		init->t.step = 1.0 * init->textures[2].height / init->line;
 	else
-		init->t.step = 1.0 * init->textures[3].height / init->line;
-	init->t.pos = init->game->linelow - init->height / 2 + init->line / 2 * init->t.step;
+		init->t.step = 1.0 * init->textures[0].height / init->line;
+	init->t.pos = init->game->linelow - init->height / 2 + init->line / 2 \
+		* init->t.step;
 }
 
 void	ft_texture_coord(t_init *init)
 {
 	if (init->t.dir == 0)
-		init->t.x = (int)(init->t.wallX * (double)init->textures[0].width);
+		init->t.x = (int)(init->t.wallX * (double)init->textures[3].width);
 	else if (init->t.dir == 1)
 	{
 		init->t.x = (int)(init->t.wallX * (double)init->textures[1].width);
@@ -28,20 +29,20 @@ void	ft_texture_coord(t_init *init)
 		init->t.x = init->textures[2].width - init->t.x - 1;
 	}
 	else
-		init->t.x = (int)(init->t.wallX * (double)init->textures[3].width);
+		init->t.x = (int)(init->t.wallX * (double)init->textures[0].width);
 	ft_step_texture(init);
 }
 
 void	ft_which_texture(t_init *init, int side)
 {
 	if (!side && init->game->rayDirX < 0)
-		init->t.dir = 0;
+		init->t.dir = 3;
 	else if (!side && init->game->rayDirX >= 0)
 		init->t.dir = 1;
 	else if (side && init->game->rayDirY < 0)
 		init->t.dir = 2;
 	else
-		init->t.dir = 3;
+		init->t.dir = 0;
 	if (!side)
 		init->t.wallX = init->game->posY + init->game->perpWallDist \
 		* init->game->rayDirY;
@@ -60,8 +61,9 @@ void	ft_draw_walls(t_init *init, int i, int j, int side)
 		init->t.y = (int)init->t.pos & (init->textures[init->t.dir].height - 1);
 		init->t.pos += init->t.step;
 		if (j < init->height && i < init->width)
-			init->addr[j * init->size_line / 4 + i] =
-				init->textures[init->t.dir].address[init->t.y * init->textures[init->t.dir].size_line / 4 + init->t.x];
+			init->addr[j * init->size_line / 4 + i] = \
+				init->textures[init->t.dir].address[init->t.y \
+					* init->textures[init->t.dir].size_line / 4 + init->t.x];
 		j++;
 	}
 }
@@ -71,7 +73,7 @@ void	ft_draw_vertical_line(t_init *init, int i, int side)
 	int	j;
 
 	init->line = init->height / fabs(init->game->perpWallDist);
-	init->game->linelow = - init->line / 2 + init->height / 2;
+	init->game->linelow = - (init->line / 2) + init->height / 2;
 	if (init->game->linelow < 0)
 		init->game->linelow = 0;
 	init->game->linehigh = init->line / 2 + init->height / 2;

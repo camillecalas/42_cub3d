@@ -65,7 +65,7 @@ void	ft_check_close_map(t_init *init)
 		j = 0;
 		while (init->map[i][j])
 		{
-		if (init->map[i][j] == '0' || init->map[i][j] == 'S'
+			if (init->map[i][j] == '0' || init->map[i][j] == 'S'
 				|| init->map[i][j] == 'N' || init->map[i][j] == 'W'
 				|| init->map[i][j] == 'E')
 			{
@@ -144,7 +144,7 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath, int n)
 		line = get_next_line(fd);
 	}
 	if (line)
-		free(line);	
+		free(line);
 	line = get_next_line(fd);
 	while (nb--)
 	{

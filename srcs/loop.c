@@ -41,7 +41,6 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 	hit = 0;
 	while (!hit)
 	{
-		// if ((init->game->deltaDistX && init->game->deltaDistX < init->game->deltaDistY) || !init->game->deltaDistY)
 		if ((init->game->sideDistX
 				&& init->game->sideDistX < init->game->sideDistY)
 			|| !init->game->sideDistY)
@@ -68,13 +67,9 @@ void	ft_perp_dist(t_init *init, int side, int stepx, int stepy)
 	if (!side)
 		init->game->perpWallDist = (init->game->mapX - init->game->posX) + \
 				(1 - stepx / 2) / init->game->rayDirX;
-		// init->game->perpWallDist = fabs(init->game->posX
-		// 		- init->game->mapX);
 	else
 		init->game->perpWallDist = (init->game->mapY - init->game->posY) + \
 				(1 - stepy / 2) / init->game->rayDirY;
-		// init->game->perpWallDist = fabs(init->game->posY
-		// 		- init->game->mapY);
 }
 
 int	ft_game_loop(t_init *init)

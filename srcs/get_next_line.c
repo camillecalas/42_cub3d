@@ -36,7 +36,6 @@ char	*ft_strjoin2(char *line_wip, char *buff)
 
 	i = 0;
 	j = 0;
-
 	if (!line_wip)
 	{
 		line_wip = malloc(sizeof(char) * 1);
@@ -66,7 +65,7 @@ char	*ft_strjoin2(char *line_wip, char *buff)
 char	*ft_line(char *line_wip)
 {
 	char	*str;
-	int			i;
+	int		i;
 
 	i = 0;
 	if (line_wip[i] == '\0')
@@ -94,8 +93,8 @@ char	*ft_line(char *line_wip)
 char	*ft_new_start(char	*line_wip)
 {
 	char	*str;
-	int			i;
-	int			j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
