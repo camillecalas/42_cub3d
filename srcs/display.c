@@ -10,7 +10,7 @@ void	ft_step_texture(t_init *init)
 		init->t.step = 1.0 * init->textures[2].height / init->line;
 	else
 		init->t.step = 1.0 * init->textures[0].height / init->line;
-	init->t.pos = init->game->linelow - init->height / 2 + init->line / 2 \
+	init->t.pos = (init->game->linelow - init->height / 2 + init->line / 2) \
 		* init->t.step;
 }
 
@@ -72,7 +72,8 @@ void	ft_draw_vertical_line(t_init *init, int i, int side)
 {
 	int	j;
 
-	init->line = init->height / fabs(init->game->perpWallDist);
+	init->line = init->height / init->game->perpWallDist;
+	// init->line = init->height / fabs(init->game->perpWallDist);
 	init->game->linelow = - (init->line / 2) + init->height / 2;
 	if (init->game->linelow < 0)
 		init->game->linelow = 0;

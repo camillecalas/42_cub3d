@@ -1,10 +1,10 @@
-C 255,20 ,30
+C 164,218 ,245
 NO ./textures/brain_coral.xpm
 SO ./textures/horn_coral.xpm
 EA ./textures/purplestone.xpm
 WE ./textures/red_mushroom.xpm
 
-F  128, 65, 32
+F  77, 158, 77
 
 111111111111111111111111111111                11
 111111111000000000000000011111                101
