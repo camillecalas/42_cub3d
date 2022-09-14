@@ -163,4 +163,7 @@ void	ft_load_textures(t_init *init);
 int		ft_key_hook(int keycode, t_init *init);
 void	ft_init_mlx(t_init *init);
 
+/* movements.c */
+void	ft_move_forward(t_init *init, t_game *game);
+
 #endif

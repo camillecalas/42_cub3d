@@ -92,6 +92,7 @@ void	ft_init_mlx(t_init *init)
 	mlx_hook(init->win, 2, 1L << 0, ft_key_hook, init);
 	mlx_loop_hook(init->mlx, ft_game_loop, init);
 	mlx_hook(init->win, 3, 1L << 1, ft_key_release, init);
+	ft_move_forward(init, init->game);
 	mlx_loop(init->mlx);
 }
 
