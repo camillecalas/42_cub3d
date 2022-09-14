@@ -41,45 +41,6 @@ void	ft_load_textures(t_init *init)
 	ft_get_textures_address(init);
 }
 
-int	ft_key_hook(int keycode, t_init *init)
-{
-	if (keycode == 65307)
-		ft_error("", init);
-	else if (keycode == MOVE_F)
-	{
-		init->moves.move_f = 1;
-		// ft_move_forward(init, init->game);
-	}
-	else if (keycode == MOVE_B)
-		init->moves.move_b = 1;
-	else if (keycode == MOVE_R)
-		init->moves.move_r = 1;
-	else if (keycode == MOVE_L)
-		init->moves.move_l = 1;
-	else if (keycode == CAMERA_R)
-		init->moves.camera_r = 1;
-	else if (keycode == CAMERA_L)
-		init->moves.camera_l = 1;
-	return (0);
-}
-
-int	ft_key_release(int keycode, t_init *init)
-{
-	if (keycode == MOVE_F)
-		init->moves.move_f = 0;
-	else if (keycode == MOVE_B)
-		init->moves.move_b = 0;
-	else if (keycode == MOVE_R)
-		init->moves.move_r = 0;
-	else if (keycode == MOVE_L)
-		init->moves.move_l = 0;
-	else if (keycode == CAMERA_R)
-		init->moves.camera_r = 0;
-	else if (keycode == CAMERA_L)
-		init->moves.camera_l = 0;
-	return (0);
-}
-
 void	ft_init_mlx(t_init *init)
 {
 	init->mlx = mlx_init();
@@ -97,15 +58,3 @@ void	ft_init_mlx(t_init *init)
 	mlx_hook(init->win, 3, 1L << 1, ft_key_release, init);
 	mlx_loop(init->mlx);
 }
-
-
-/*
-Linux qwerty :
-
-define ROTATE_LEFT 65361
-define ROTATE_RIGHT 65363
-define FORWARD_W_Z 119
-define BACK_S_S 115
-define RIGHT_D_D 100
-define LEFT_A_Q 97
-*/

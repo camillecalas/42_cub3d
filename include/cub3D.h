@@ -46,6 +46,8 @@ typedef struct s_game
 {
 	int		linelow;
 	int		linehigh;
+	int		mapX;
+	int		mapY;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -55,8 +57,6 @@ typedef struct s_game
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;
-	double	mapX;
-	double	mapY;
 	double	sideDistX;
 	double	sideDistY;
 	double	deltaDistX;
@@ -119,7 +119,6 @@ typedef struct s_init
 
 /* check_param.c */
 int		ft_check_scene(char *scene);
-void	ft_check_texture_parameters(char **elements, t_init *init);
 void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init);
 void	ft_check_color_parameters(char *line, t_init *init);
 int		ft_check_color(char *line, size_t *i, t_init *init);
@@ -160,10 +159,23 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath, int n);
 /* mlx.c */
 void	ft_get_textures_address(t_init *init);
 void	ft_load_textures(t_init *init);
-int		ft_key_hook(int keycode, t_init *init);
 void	ft_init_mlx(t_init *init);
+
+/* hooks.c */
+void	ft_key_hook_moves(int keycode, t_init *init);
+void	ft_key_hook_camera(int keycode, t_init *init);
+int		ft_key_hook(int keycode, t_init *init);
+int		ft_key_release(int keycode, t_init *init);
 
 /* movements.c */
 void	ft_move_forward(t_init *init, t_game *game);
+void	ft_move_backward(t_init *init, t_game *game);
+void	ft_move_right(t_init *init, t_game *game);
+void	ft_move_left(t_init *init, t_game *game);
+
+/* textures.c */
+void	ft_store_textures_paths(char **elements, t_init *init, char *path);
+void	ft_check_texture_parameters(char **elements, t_init *init);
+
 
 #endif

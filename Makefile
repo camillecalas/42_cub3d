@@ -9,7 +9,9 @@ SRCS	=	./srcs/check_param.c \
 			./srcs/main.c \
 			./srcs/mlx.c \
 			./srcs/movements.c\
-			./srcs/map.c
+			./srcs/map.c \
+			./srcs/hooks.c \
+			./srcs/textures.c
 
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
