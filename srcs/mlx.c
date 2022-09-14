@@ -46,17 +46,34 @@ int	ft_key_hook(int keycode, t_init *init)
 	if (keycode == 65307)
 		ft_error("", init);
 	else if (keycode == MOVE_F)
-		init->moves.move_r = 1;
+		init->moves.move_f = 1;
 	else if (keycode == MOVE_B)
-		init->moves.camera_r = 1;
+		init->moves.move_b = 1;
 	else if (keycode == MOVE_R)
-		init->moves.camera_r = 1;
+		init->moves.move_r = 1;
 	else if (keycode == MOVE_L)
-		init->moves.camera_r = 1;
+		init->moves.move_l = 1;
 	else if (keycode == CAMERA_R)
 		init->moves.camera_r = 1;
 	else if (keycode == CAMERA_L)
-		init->moves.camera_r = 1;
+		init->moves.camera_l = 1;
+	return (0);
+}
+
+int	ft_key_release(int keycode, t_init *init)
+{
+	if (keycode == MOVE_F)
+		init->moves.move_f = 0;
+	else if (keycode == MOVE_B)
+		init->moves.move_b = 0;
+	else if (keycode == MOVE_R)
+		init->moves.move_r = 0;
+	else if (keycode == MOVE_L)
+		init->moves.move_l = 0;
+	else if (keycode == CAMERA_R)
+		init->moves.camera_r = 0;
+	else if (keycode == CAMERA_L)
+		init->moves.camera_l = 0;
 	return (0);
 }
 
@@ -71,9 +88,10 @@ void	ft_init_mlx(t_init *init)
 	init->addr = (int *)mlx_get_data_addr(init->img, &init->bits_per_pixel,
 			&init->size_line, &init->endian);
 	init->win = mlx_new_window(init->mlx, init->width, init->height, "cub3D");
-	mlx_hook(init->win, 2, 1L << 0, ft_key_hook, init);
 	mlx_hook(init->win, 17, 0L, ft_clean_all, init);
+	mlx_hook(init->win, 2, 1L << 0, ft_key_hook, init);
 	mlx_loop_hook(init->mlx, ft_game_loop, init);
+	mlx_hook(init->win, 3, 1L << 1, ft_key_release, init);
 	mlx_loop(init->mlx);
 }
 
