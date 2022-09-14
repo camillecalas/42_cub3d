@@ -45,6 +45,18 @@ int	ft_key_hook(int keycode, t_init *init)
 {
 	if (keycode == 65307)
 		ft_error("", init);
+	else if (keycode == MOVE_F)
+		init->moves.move_r = 1;
+	else if (keycode == MOVE_B)
+		init->moves.camera_r = 1;
+	else if (keycode == MOVE_R)
+		init->moves.camera_r = 1;
+	else if (keycode == MOVE_L)
+		init->moves.camera_r = 1;
+	else if (keycode == CAMERA_R)
+		init->moves.camera_r = 1;
+	else if (keycode == CAMERA_L)
+		init->moves.camera_r = 1;
 	return (0);
 }
 
@@ -64,3 +76,15 @@ void	ft_init_mlx(t_init *init)
 	mlx_loop_hook(init->mlx, ft_game_loop, init);
 	mlx_loop(init->mlx);
 }
+
+
+/*
+Linux qwerty :
+
+define ROTATE_LEFT 65361
+define ROTATE_RIGHT 65363
+define FORWARD_W_Z 119
+define BACK_S_S 115
+define RIGHT_D_D 100
+define LEFT_A_Q 97
+*/

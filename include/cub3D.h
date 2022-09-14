@@ -18,6 +18,17 @@ typedef enum	orientation
 	EAST
 } t_orientation;
 
+typedef enum movements
+{
+	MOVE_F = 119,
+	MOVE_B = 115,
+	MOVE_R = 100,
+	MOVE_L = 97,
+	CAMERA_R = 65363,
+	CAMERA_L = 65361
+
+} t_movements;
+
 typedef struct s_texture
 {
 	t_orientation	orientation;
@@ -68,6 +79,16 @@ typedef struct s_t
 	double	pos;
 }	t_t;
 
+typedef struct s_moves
+{
+	int	move_f;
+	int	move_b;
+	int	move_l;
+	int	move_r;
+	int	camera_r;
+	int	camera_l;
+} t_moves;
+
 typedef struct s_init
 {
 	void		*mlx;
@@ -91,6 +112,7 @@ typedef struct s_init
 	int			line;
 	char		**map;
 	t_game		*game;
+	t_moves		moves;
 	t_texture	textures[4];
 	t_t			t;
 }	t_init;
