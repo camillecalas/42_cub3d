@@ -12,7 +12,7 @@ void	ft_step_and_sidedist(t_init *init, double *stepX, double *stepY)
 	// else if (init->game->rayDirX > 0)
 	{
 		*stepX = 1;
-		init->game->sideDistX = (init->game->mapX + 1 - init->game->posX)
+		init->game->sideDistX = (init->game->mapX + 1.0 - init->game->posX)
 			* init->game->deltaDistX;
 	}
 	// else
@@ -27,7 +27,7 @@ void	ft_step_and_sidedist(t_init *init, double *stepX, double *stepY)
 	// else if (init->game->rayDirY > 0)
 	{
 		*stepY = 1;
-		init->game->sideDistY = (init->game->mapY + 1 - init->game->posY)
+		init->game->sideDistY = (init->game->mapY + 1.0 - init->game->posY)
 			* init->game->deltaDistY;
 	}
 	// else
@@ -37,8 +37,6 @@ void	ft_step_and_sidedist(t_init *init, double *stepX, double *stepY)
 void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 {
 	int	hit;
-	int	x;
-	int	y;
 
 	hit = 0;
 	while (!hit)
@@ -49,18 +47,16 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 		// 	|| !init->game->sideDistY)
 		{
 			init->game->sideDistX += init->game->deltaDistX;
-			init->game->mapX += stepX;
+			init->game->mapX += (int)stepX;
 			*side = 0;
 		}
 		else
 		{
 			init->game->sideDistY += init->game->deltaDistY;
-			init->game->mapY += stepY;
+			init->game->mapY += (int)stepY;
 			*side = 1;
 		}
-		x = (int)init->game->mapX;
-		y = (int)init->game->mapY;
-		if (init->map[y][x] == '1')
+		if (init->map[init->game->mapY][init->game->mapX] == '1')
 			hit++;
 	}
 }
@@ -68,11 +64,11 @@ void	ft_dda(t_init *init, int *side, double stepX, double stepY)
 void	ft_perp_dist(t_init *init, int side, int stepx, int stepy)
 {
 	if (!side)
-		init->game->perpWallDist = (init->game->mapX - init->game->posX) + \
-				(1 - stepx / 2) / init->game->rayDirX;
+		init->game->perpWallDist = ((double)init->game->mapX - \
+				init->game->posX + (1 - stepx) / 2) / init->game->rayDirX;
 	else
-		init->game->perpWallDist = (init->game->mapY - init->game->posY) + \
-				(1 - stepy / 2) / init->game->rayDirY;
+		init->game->perpWallDist = ((double)init->game->mapY - \
+				init->game->posY + (1 - stepy) / 2) / init->game->rayDirY;
 }
 
 int	ft_game_loop(t_init *init)
@@ -90,8 +86,8 @@ int	ft_game_loop(t_init *init)
 			* init->game->cameraX;
 		init->game->rayDirY = init->game->dirY + init->game->planeY
 			* init->game->cameraX;
-		init->game->mapX = init->game->posX;
-		init->game->mapY = init->game->posY;
+		init->game->mapX = (int)init->game->posX;
+		init->game->mapY = (int)init->game->posY;
 		if (!init->game->rayDirY)
 			init->game->deltaDistX = 0;
 		else if (!init->game->rayDirX)

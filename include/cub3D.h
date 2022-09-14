@@ -35,6 +35,8 @@ typedef struct s_game
 {
 	int		linelow;
 	int		linehigh;
+	int		mapX;
+	int		mapY;
 	double	posX;
 	double	posY;
 	double	dirX;
@@ -44,8 +46,6 @@ typedef struct s_game
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;
-	double	mapX;
-	double	mapY;
 	double	sideDistX;
 	double	sideDistY;
 	double	deltaDistX;
