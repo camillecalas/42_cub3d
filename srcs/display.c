@@ -77,8 +77,8 @@ void	ft_draw_vertical_line(t_init *init, int i, int side)
 	if (init->game->linelow < 0)
 		init->game->linelow = 0;
 	init->game->linehigh = init->line / 2 + init->height / 2;
-	if (init->game->linehigh >= init->height)
-		init->game->linehigh = init->height;
+	if (init->game->linehigh >= init->height || init->game->linehigh < 0)
+		init->game->linehigh = init->height - 1;
 	j = 0;
 	while (j < init->game->linelow)
 	{

@@ -97,7 +97,6 @@ typedef struct s_init
 
 /* check_param.c */
 int		ft_check_scene(char *scene);
-void	ft_check_texture_parameters(char **elements, t_init *init);
 void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init);
 void	ft_check_color_parameters(char *line, t_init *init);
 int		ft_check_color(char *line, size_t *i, t_init *init);
@@ -140,5 +139,9 @@ void	ft_get_textures_address(t_init *init);
 void	ft_load_textures(t_init *init);
 int		ft_key_hook(int keycode, t_init *init);
 void	ft_init_mlx(t_init *init);
+
+/* textures.c */
+void	ft_store_textures_paths(char **elements, t_init *init, char *path);
+void	ft_check_texture_parameters(char **elements, t_init *init);
 
 #endif

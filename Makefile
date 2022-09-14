@@ -8,7 +8,8 @@ SRCS	=	./srcs/check_param.c \
 			./srcs/loop.c \
 			./srcs/main.c \
 			./srcs/mlx.c \
-			./srcs/map.c
+			./srcs/map.c \
+			./srcs/textures.c
 
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang

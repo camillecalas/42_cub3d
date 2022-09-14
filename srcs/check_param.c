@@ -12,46 +12,6 @@ int	ft_check_scene(char *scene)
 	return (0);
 }
 
-void	ft_check_texture_parameters(char **elements, t_init *init)
-{
-	char	*path;
-	int		fd;
-
-	path = NULL;
-	if (elements[1])
-		path = ft_strndup(elements[1], 0, ft_strlen(elements[1]) - 1);
-	fd = open(path, O_RDONLY);
-	if (!elements[1] || elements[2] || fd == -1)
-	{
-		ft_free_split(elements);
-		free(path);
-		ft_error("Error\nInvalid texture information\n", init);
-	}
-	close(fd);
-	if (!ft_strcmp(elements[0], "NO"))
-	{
-		init->textures[0].orientation = NORTH;
-		init->textures[0].path = ft_strdup(path);
-	}
-	if (!ft_strcmp(elements[0], "WE"))
-	{
-		init->textures[1].orientation = WEST;
-		init->textures[1].path = ft_strdup(path);
-	}
-	if (!ft_strcmp(elements[0], "SO"))
-	{
-		init->textures[2].orientation = SOUTH;
-		init->textures[2].path = ft_strdup(path);
-	}
-	if (!ft_strcmp(elements[0], "EA"))
-	{
-		init->textures[3].orientation = EAST;
-		init->textures[3].path = ft_strdup(path);
-	}
-	if (elements[1])
-		free(path);
-}
-
 void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init)
 {
 	while (line[*i] == ' ')

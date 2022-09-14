@@ -70,18 +70,8 @@ void	ft_init_init(t_init *init)
 	init->game->oldTime = 0;
 }
 
-void	ft_get_map_info(char *line, t_init *init)
+void	ft_orientation_id_cmp(char **elements, t_init *init)
 {
-	char	**elements;
-
-	elements = ft_split(line, " ");
-	if (ft_strcmp("NO", elements[0]) && ft_strcmp("WE", elements[0])
-		&& ft_strcmp("SO", elements[0]) && ft_strcmp("EA", elements[0])
-		&& ft_strcmp("F", elements[0]) && ft_strcmp("C", elements[0]))
-	{
-		ft_free_split(elements);
-		ft_error("Error\nInvalid identifier\n", init);
-	}
 	if (!ft_strcmp("NO", elements[0]))
 	{
 		ft_check_texture_parameters(elements, init);
@@ -102,7 +92,22 @@ void	ft_get_map_info(char *line, t_init *init)
 		ft_check_texture_parameters(elements, init);
 		init->ea++;
 	}
-	else if (!ft_strcmp("C", elements[0]))
+}
+
+void	ft_get_map_info(char *line, t_init *init)
+{
+	char	**elements;
+
+	elements = ft_split(line, " ");
+	if (ft_strcmp("NO", elements[0]) && ft_strcmp("WE", elements[0])
+		&& ft_strcmp("SO", elements[0]) && ft_strcmp("EA", elements[0])
+		&& ft_strcmp("F", elements[0]) && ft_strcmp("C", elements[0]))
+	{
+		ft_free_split(elements);
+		ft_error("Error\nInvalid identifier\n", init);
+	}
+	ft_orientation_id_cmp(elements, init);
+	if (!ft_strcmp("C", elements[0]))
 	{
 		ft_check_color_parameters(line, init);
 		init->c++;
