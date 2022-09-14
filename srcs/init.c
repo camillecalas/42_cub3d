@@ -70,30 +70,6 @@ void	ft_init_init(t_init *init)
 	init->game->oldTime = 0;
 }
 
-void	ft_orientation_id_cmp(char **elements, t_init *init)
-{
-	if (!ft_strcmp("NO", elements[0]))
-	{
-		ft_check_texture_parameters(elements, init);
-		init->no++;
-	}
-	else if (!ft_strcmp("SO", elements[0]))
-	{
-		ft_check_texture_parameters(elements, init);
-		init->so++;
-	}
-	else if (!ft_strcmp("WE", elements[0]))
-	{
-		ft_check_texture_parameters(elements, init);
-		init->we++;
-	}
-	else if (!ft_strcmp("EA", elements[0]))
-	{
-		ft_check_texture_parameters(elements, init);
-		init->ea++;
-	}
-}
-
 void	ft_get_map_info(char *line, t_init *init)
 {
 	char	**elements;
@@ -120,40 +96,12 @@ void	ft_get_map_info(char *line, t_init *init)
 	ft_free_split(elements);
 }
 
-void	ft_open_map_file(char *filepath, t_init *init)
+void	ft_open_fd(char *filepath, t_init *init)
 {
-	int		n;
-	char	*line;
-
-	n = 0;
 	init->fd = open(filepath, O_DIRECTORY);
 	if (init->fd != -1)
 		ft_error("Error\nMap cannot be a directory\n", init);
 	init->fd = open(filepath, O_RDONLY);
 	if (init->fd == -1)
 		ft_error("Error\nInvalid map file\n", init);
-	line = get_next_line(init->fd);
-	while (line)
-	{
-		n++;
-		if (init->no && init->we && init->so && init->ea && init->f && init->c)
-			break ;
-		if (ft_strlen(line) == 1)
-		{
-			if (line)
-				free(line);
-			line = get_next_line(init->fd);
-			continue ;
-		}
-		ft_get_map_info(line, init);
-		if (line)
-			free(line);
-		line = get_next_line(init->fd);
-	}
-	if (line)
-		free(line);
-	if (init->no != 1 || init->we != 1 || init->so != 1 || init->ea != 1
-		|| init->f != 1 || init->c != 1)
-		ft_error("Error\nInvalid map informations\n", init);
-	ft_cpy_map(init->fd, init, filepath, n);
 }

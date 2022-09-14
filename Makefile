@@ -3,6 +3,7 @@ NAME	=	cub3D
 SRCS	=	./srcs/check_param.c \
 			./srcs/clean.c \
 			./srcs/display.c \
+			./srcs/get_next_line_utils.c \
 			./srcs/get_next_line.c \
 			./srcs/init.c \
 			./srcs/loop.c \

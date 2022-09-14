@@ -1,5 +1,34 @@
 #include "../include/cub3D.h"
 
+void	ft_check_direction(t_init *init)
+{
+	int	nswe;
+	int	i;
+	int	j;
+
+	nswe = 0;
+	i = -1;
+	while (init->map[++i])
+	{	
+		j = 0;
+		while (init->map[i][j])
+		{
+			if (init->map[i][j] == 'S' || init->map[i][j] == 'N'
+				|| init->map[i][j] == 'W' || init->map[i][j] == 'E')
+			{
+				init->game->posX = j;
+				init->game->posY = i;
+				ft_init_dir(init, init->map[i][j]);
+				ft_init_plane(init, init->map[i][j]);
+				nswe++;
+			}
+			j++;
+		}
+	}
+	if (nswe != 1)
+		ft_error("Error\nInvalid map\n", init);
+}
+
 int	ft_check_scene(char *scene)
 {
 	if (ft_strlen(scene) < 5)

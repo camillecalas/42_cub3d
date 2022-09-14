@@ -5,13 +5,32 @@ int	ft_color_convert(int r, int g, int b)
 	return ((r << 16) + (g << 8) + b);
 }
 
-void	ft_print_map(t_init *init)
+void	ft_open_map_file(char *filepath, t_init *init)
 {
-	int	i;
+	char	*line;
 
-	i = -1;
-	while (init->map[++i])
-		printf("map: %s\n", init->map[i]);
+	init->n = 0;
+	ft_open_fd(filepath, init);
+	line = get_next_line(init->fd);
+	while (line)
+	{
+		init->n++;
+		if (init->no && init->we && init->so && init->ea && init->f && init->c)
+			break ;
+		if (ft_strlen(line) == 1)
+		{
+			if (line)
+				free(line);
+			line = get_next_line(init->fd);
+			continue ;
+		}
+		ft_get_map_info(line, init);
+		if (line)
+			free(line);
+		line = get_next_line(init->fd);
+	}
+	if (line)
+		free(line);
 }
 
 int	main(int ac, char **av)
@@ -28,6 +47,10 @@ int	main(int ac, char **av)
 		ft_error("Error\nCould not allocate memory for init\n", init);
 	ft_init_init(init);
 	ft_open_map_file(av[1], init);
+	if (init->no != 1 || init->we != 1 || init->so != 1 || init->ea != 1
+		|| init->f != 1 || init->c != 1)
+		ft_error("Error\nInvalid map informations\n", init);
+	ft_cpy_map(init->fd, init, av[1]);
 	ft_init_mlx(init);
 	ft_clean_all(init);
 	return (0);
