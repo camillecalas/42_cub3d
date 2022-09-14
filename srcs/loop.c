@@ -113,5 +113,7 @@ int	ft_game_loop(t_init *init)
 		i++;
 	}
 	mlx_put_image_to_window(init->mlx, init->win, init->img, 0, 0);
+	// printf("init->game->rayDirX %f\n", init->game->rayDirX );
+	ft_move_forward(init, init->game);
 	return (0);
 }

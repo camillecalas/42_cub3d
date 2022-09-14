@@ -48,6 +48,15 @@ void	ft_init_dir(t_init *init, char c)
 	}
 }
 
+void	ft_init_moves(t_init *init)
+{
+	init->moves.move_f = 0;
+	init->moves.move_b = 0;
+	init->moves.move_r = 0;
+	init->moves.move_l = 0;
+	init->game->moveSpeed = 0.1;
+}
+
 void	ft_init_init(t_init *init)
 {
 	init->no = 0;
@@ -68,6 +77,7 @@ void	ft_init_init(t_init *init)
 		ft_error("Error\nMemory for init->game could not be allocated\n", init);
 	init->game->time = 0;
 	init->game->oldTime = 0;
+	ft_init_moves(init);
 }
 
 void	ft_get_map_info(char *line, t_init *init)
