@@ -55,6 +55,7 @@ void	ft_init_moves(t_init *init)
 	init->moves.move_r = 0;
 	init->moves.move_l = 0;
 	init->game->moveSpeed = 0.1;
+	init->game->rotSpeed = 0.1;
 }
 
 void	ft_init_init(t_init *init)

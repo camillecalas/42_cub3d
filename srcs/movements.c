@@ -78,3 +78,4 @@ void	ft_move_left(t_init *init, t_game *game)
 			game->posY += game->dirX * game->moveSpeed;
 	}
 }
+

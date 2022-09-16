@@ -173,6 +173,11 @@ void	ft_move_backward(t_init *init, t_game *game);
 void	ft_move_right(t_init *init, t_game *game);
 void	ft_move_left(t_init *init, t_game *game);
 
+/* camera_movements.c */
+void	ft_move_camera_right(t_init *init, t_game *game);
+void	ft_move_camera_left(t_init *init, t_game *game);
+void	ft_move_camera(t_init *init, t_game *game);
+
 /* textures.c */
 void	ft_store_textures_paths(char **elements, t_init *init, char *path);
 void	ft_check_texture_parameters(char **elements, t_init *init);
