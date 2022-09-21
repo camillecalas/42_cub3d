@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:32 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:35:07 by ccalas           ###   ########.fr       */
+/*   Updated: 2022/09/21 13:28:22 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
+
+int	ft_is_player(char c)
+{
+	if (c == 'N' || c == 'W' || c == 'S' || c == 'E')
+		return (1);
+	return (0);
+}
 
 int	ft_color_convert(int r, int g, int b)
 {

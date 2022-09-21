@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 12:23:32 by ccalas           ###   ########.fr       */
+/*   Updated: 2022/09/21 13:28:42 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ void	ft_init_vectors(t_init *init, int i);
 int		ft_game_loop(t_init *init);
 
 /* main.c */
+int		ft_is_player(char c);
 int		ft_color_convert(int r, int g, int b);
 void	ft_open_map_file(char *filepath, t_init *init);
 int		main(int ac, char **av);
