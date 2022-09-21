@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:32 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:08:56 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:21:38 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ int	ft_is_player(char c)
 	return (0);
 }
 
-int	ft_color_convert(int r, int g, int b)
+void	ft_check_empty_line(char *line, t_init *init)
 {
-	return ((r << 16) + (g << 8) + b);
+	if (line && ft_strlen(line) != 1)
+	{
+		if (line)
+			free(line);
+		ft_error("Error\nInvalid map informations\n", init);
+	}
 }
 
 void	ft_open_map_file(char *filepath, t_init *init)
@@ -48,12 +53,7 @@ void	ft_open_map_file(char *filepath, t_init *init)
 			free(line);
 		line = get_next_line(init->fd);
 	}
-	if (line && ft_strlen(line) != 1)
-	{
-		if (line)
-			free(line);
-		ft_error("Error\nInvalid map informations\n", init);
-	}
+	ft_check_empty_line(line, init);
 	if (line)
 		free(line);
 }

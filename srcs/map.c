@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:36 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:09:52 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:24:10 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ void	ft_cpy_map_lines(char *filepath, int fd, int nb, t_init *init)
 	while (nb--)
 	{
 		if (line)
-			init->map[i] = ft_strndup(line, 0, ft_strlen(line));
-		i++;
+			init->map[i++] = ft_strndup(line, 0, ft_strlen(line));
 		if (line)
 			free(line);
 		line = get_next_line(fd);

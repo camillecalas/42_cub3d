@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 14:52:32 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:22:13 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ int		ft_game_loop(t_init *init);
 
 /* main.c */
 int		ft_is_player(char c);
-int		ft_color_convert(int r, int g, int b);
+void	ft_check_empty_line(char *line, t_init *init);
 void	ft_open_map_file(char *filepath, t_init *init);
 void	ft_free_col_param(char *line, char **elements, t_init *init);
 int		main(int ac, char **av);
@@ -193,6 +193,7 @@ void	ft_cpy_map_lines(char *filepath, int fd, int nb, t_init *init);
 void	ft_cpy_map(int fd, t_init *init, char *filepath);
 
 /* mlx.c */
+int		ft_color_convert(int r, int g, int b);
 void	ft_get_textures_address(t_init *init);
 void	ft_load_textures(t_init *init);
 void	ft_init_mlx(t_init *init);

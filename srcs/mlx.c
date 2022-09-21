@@ -6,11 +6,16 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:42 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 12:03:34 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:21:35 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
+
+int	ft_color_convert(int r, int g, int b)
+{
+	return ((r << 16) + (g << 8) + b);
+}
 
 void	ft_get_textures_address(t_init *init)
 {
