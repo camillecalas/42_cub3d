@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:22:13 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:48:39 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,7 @@ void	ft_move_right(t_init *init, t_game *game);
 void	ft_move_left(t_init *init, t_game *game);
 
 /* camera_movements.c */
+void	ft_dispatch_map_func(char *filepath, int fd, int nb, t_init *init);
 void	ft_move_camera_left(t_init *init, t_game *game, \
 double prevplanex, double oldplanex);
 void	ft_move_camera(t_init *init, t_game *game);

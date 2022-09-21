@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:36 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:24:10 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:48:23 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath)
 		free(line);
 		ft_error("Error\nNo map provided\n", init);
 	}
+	free(line);
 	close(fd);
 	init->map = ft_calloc(nb + 1, sizeof(char *));
-	ft_cpy_map_lines(filepath, fd, nb, init);
-	ft_check_map(init);
+	ft_dispatch_map_func(filepath, fd, nb, init);
 }

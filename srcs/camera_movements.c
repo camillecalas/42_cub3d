@@ -6,11 +6,17 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:42 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:11:44 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:48:20 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
+
+void	ft_dispatch_map_func(char *filepath, int fd, int nb, t_init *init)
+{
+	ft_cpy_map_lines(filepath, fd, nb, init);
+	ft_check_map(init);
+}
 
 void	ft_move_camera_left(t_init *init, t_game *game, \
 double prevplanex, double prevdirx)
