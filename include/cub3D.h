@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:11:36 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:32:13 by ccalas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,9 +215,9 @@ void	ft_move_camera(t_init *init, t_game *game);
 /* textures.c */
 void	ft_check_authorised_char(t_init *init);
 void	ft_check_map_line(t_init *init, int i, int j);
-void	ft_orientation_id_cmp(char **elements, t_init *init);
+void	ft_orientation_id_cmp(char **elements, t_init *init, char *line);
 void	ft_store_textures_paths(char **elements, t_init *init, char *path);
-void	ft_check_texture_parameters(char **elements, t_init *init);
+void	ft_check_texture_parameters(char **elements, t_init *init, char *line);
 
 
 #endif

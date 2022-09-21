@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_param.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:47 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:11:49 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:30:58 by ccalas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	ft_check_color_parameters(char *line, t_init *init)
 		ft_ignore_spaces_and_comma(line, &i, init);
 		b = ft_check_color(line, &i, init);
 		if (line[i] != '\n')
+		{
+			free(line);
 			ft_error("Error\nInvalid color informations\n", init);
+		}
 		else
 			break ;
 	}

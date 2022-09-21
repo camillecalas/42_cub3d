@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:42 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:12:44 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:03:34 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	ft_load_textures(t_init *init)
 void	ft_init_mlx(t_init *init)
 {
 	init->map[(int)init->game->posY][(int)init->game->posX] = '0';
+	init->game->posX += 0.5;
+	init->game->posY += 0.5;
 	init->mlx = mlx_init();
 	if (!init->mlx)
 		ft_error("Error\nCould not initialize mlx\n", init);
