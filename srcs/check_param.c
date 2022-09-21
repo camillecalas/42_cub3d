@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_param.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:47 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:30:58 by ccalas           ###   ########.fr       */
+/*   Updated: 2022/09/21 12:21:29 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init)
 		(*i)++;
 }
 
-void	ft_check_color_parameters(char *line, t_init *init)
+void	ft_check_color_parameters(char *line, t_init *init, char **elements)
 {
 	size_t	i;
 	int		r;
@@ -76,14 +76,15 @@ void	ft_check_color_parameters(char *line, t_init *init)
 	{
 		while (line[i] == ' ')
 			i++;
-		r = ft_check_color(line, &i, init);
+		r = ft_check_color(line, &i, init, elements);
 		ft_ignore_spaces_and_comma(line, &i, init);
-		g = ft_check_color(line, &i, init);
+		g = ft_check_color(line, &i, init, elements);
 		ft_ignore_spaces_and_comma(line, &i, init);
-		b = ft_check_color(line, &i, init);
+		b = ft_check_color(line, &i, init, elements);
 		if (line[i] != '\n')
 		{
 			free(line);
+			ft_free_split(elements);
 			ft_error("Error\nInvalid color informations\n", init);
 		}
 		else
@@ -95,19 +96,27 @@ void	ft_check_color_parameters(char *line, t_init *init)
 		init->floor_hexa = ft_color_convert(r, g, b);
 }
 
-int	ft_check_color(char *line, size_t *i, t_init *init)
+int	ft_check_color(char *line, size_t *i, t_init *init, char **elements)
 {
 	int	c;
 
 	c = 0;
 	if (line[*i] < 48 || line[*i] > 57)
+	{
+		free(line);
+		ft_free_split(elements);
 		ft_error("Error\nInvalid color informations\n", init);
+	}
 	while (line[*i] > 47 && line[*i] < 58)
 	{
 		c = c * 10 + line[*i] - 48;
 			(*i)++;
 	}
 	if (c < 0 || c > 255)
+	{
+		free(line);
+		ft_free_split(elements);
 		ft_error("Error\nInvalid color informations\n", init);
+	}
 	return (c);
 }

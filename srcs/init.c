@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:21 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:29:06 by ccalas           ###   ########.fr       */
+/*   Updated: 2022/09/21 12:20:41 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,12 @@ void	ft_get_map_info(char *line, t_init *init)
 	ft_orientation_id_cmp(elements, init, line);
 	if (!ft_strcmp("C", elements[0]))
 	{
-		ft_check_color_parameters(line, init);
+		ft_check_color_parameters(line, init, elements);
 		init->c++;
 	}
 	else if (!ft_strcmp("F", elements[0]))
 	{
-		ft_check_color_parameters(line, init);
+		ft_check_color_parameters(line, init, elements);
 		init->f++;
 	}
 	ft_free_split(elements);
