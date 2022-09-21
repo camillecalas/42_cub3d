@@ -2,12 +2,12 @@
 NO ./textures/greystone.xpm
 SO ./textures/eagle.xpm
 EA ./textures/bluestone.xpm
-WE ./textures/colorstone.xpm
+WE ./textures/colorstonee.xpm
 
 
 
 C 51,185,200
-F 0,5300
+F 0,53,00
 
 11111111111
 10E00000001

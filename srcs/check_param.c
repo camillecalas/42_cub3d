@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:47 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 12:21:29 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:46:28 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,17 @@ int	ft_check_scene(char *scene)
 	return (0);
 }
 
-void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init)
+void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init, \
+char **elements)
 {
 	while (line[*i] == ' ')
 		(*i)++;
 	if (line[*i] != ',')
+	{
+		free(line);
+		ft_free_split(elements);
 		ft_error("Error\nInvalid color informations\n", init);
+	}
 	(*i)++;
 	while (line[*i] == ' ')
 		(*i)++;
@@ -77,9 +82,9 @@ void	ft_check_color_parameters(char *line, t_init *init, char **elements)
 		while (line[i] == ' ')
 			i++;
 		r = ft_check_color(line, &i, init, elements);
-		ft_ignore_spaces_and_comma(line, &i, init);
+		ft_ignore_spaces_and_comma(line, &i, init, elements);
 		g = ft_check_color(line, &i, init, elements);
-		ft_ignore_spaces_and_comma(line, &i, init);
+		ft_ignore_spaces_and_comma(line, &i, init, elements);
 		b = ft_check_color(line, &i, init, elements);
 		if (line[i] != '\n')
 		{

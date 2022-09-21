@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 13:28:42 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:44:17 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ typedef struct s_init
 /* check_param.c */
 void	ft_check_direction(t_init *init);
 int		ft_check_scene(char *scene);
-void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init);
+void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init, \
+char **elements);
 void	ft_check_color_parameters(char *line, t_init *init, char **elements);
 int		ft_check_color(char *line, size_t *i, t_init *init, char **elements);
 
