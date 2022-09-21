@@ -73,7 +73,6 @@ void	ft_draw_vertical_line(t_init *init, int i, int side)
 	int	j;
 
 	init->line = init->height / init->game->perpWallDist;
-	// init->line = init->height / fabs(init->game->perpWallDist);
 	init->game->linelow = - (init->line / 2) + init->height / 2;
 	if (init->game->linelow < 0)
 		init->game->linelow = 0;

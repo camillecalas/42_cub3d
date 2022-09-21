@@ -30,13 +30,11 @@ void	ft_key_hook_camera(int keycode, t_init *init)
 	{
 		init->moves.camera_r = 1;
 		ft_move_camera(init, init->game);
-		// ft_move_camera_right(init, init->game);
 	}
 	else if (keycode == CAMERA_L)
 	{
 		init->moves.camera_l = 1;
 		ft_move_camera(init, init->game);
-		// ft_move_camera_left(init, init->game);
 	}
 }
 

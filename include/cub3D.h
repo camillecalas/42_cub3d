@@ -174,8 +174,8 @@ void	ft_move_right(t_init *init, t_game *game);
 void	ft_move_left(t_init *init, t_game *game);
 
 /* camera_movements.c */
-void	ft_move_camera_right(t_init *init, t_game *game);
-void	ft_move_camera_left(t_init *init, t_game *game);
+void	ft_move_camera_left(t_init *init, t_game *game, \
+double prevplanex, double oldplanex);
 void	ft_move_camera(t_init *init, t_game *game);
 
 /* textures.c */
