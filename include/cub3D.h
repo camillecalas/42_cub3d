@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 13:44:17 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:52:32 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ int		ft_game_loop(t_init *init);
 int		ft_is_player(char c);
 int		ft_color_convert(int r, int g, int b);
 void	ft_open_map_file(char *filepath, t_init *init);
+void	ft_free_col_param(char *line, char **elements, t_init *init);
 int		main(int ac, char **av);
 
 /* map.c */

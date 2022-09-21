@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:47 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 14:34:46 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:52:17 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,7 @@ void	ft_check_color_parameters(char *line, t_init *init, char **elements)
 		ft_ignore_spaces_and_comma(line, &i, init, elements);
 		b = ft_check_color(line, &i, init, elements);
 		if (line[i] != '\n' && line[i] != '\0')
-		{
-			free(line);
-			ft_free_split(elements);
-			ft_error("Error\nInvalid color informations\n", init);
-		}
+			ft_free_col_param(line, elements, init);
 		else
 			break ;
 	}

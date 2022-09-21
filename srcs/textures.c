@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:54 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 14:46:16 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:55:29 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,26 @@ void	ft_store_textures_paths(char **elements, t_init *init, char *path)
 	if (!ft_strcmp(elements[0], "NO"))
 	{
 		init->textures[0].orientation = NORTH;
-		init->textures[0].path = ft_strdup(path);
+		if (!init->no)
+			init->textures[0].path = ft_strdup(path);
 	}
 	if (!ft_strcmp(elements[0], "WE"))
 	{
 		init->textures[1].orientation = WEST;
-		init->textures[1].path = ft_strdup(path);
+		if (!init->we)
+			init->textures[1].path = ft_strdup(path);
 	}
 	if (!ft_strcmp(elements[0], "SO"))
 	{
 		init->textures[2].orientation = SOUTH;
-		init->textures[2].path = ft_strdup(path);
+		if (!init->so)
+			init->textures[2].path = ft_strdup(path);
 	}
 	if (!ft_strcmp(elements[0], "EA"))
 	{
 		init->textures[3].orientation = EAST;
-		init->textures[3].path = ft_strdup(path);
+		if (!init->ea)
+			init->textures[3].path = ft_strdup(path);
 	}
 }
 

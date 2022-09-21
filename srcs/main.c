@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:32 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 14:15:35 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:51:54 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ void	ft_open_map_file(char *filepath, t_init *init)
 	}
 	if (line)
 		free(line);
+}
+
+void	ft_free_col_param(char *line, char **elements, t_init *init)
+{
+	free(line);
+	ft_free_split(elements);
+	ft_error("Error\nInvalid color informations\n", init);
 }
 
 int	main(int ac, char **av)
