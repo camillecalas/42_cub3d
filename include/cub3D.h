@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
+/*   Updated: 2022/09/21 11:11:36 by baubigna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -194,6 +206,11 @@ void	ft_move_forward(t_init *init, t_game *game);
 void	ft_move_backward(t_init *init, t_game *game);
 void	ft_move_right(t_init *init, t_game *game);
 void	ft_move_left(t_init *init, t_game *game);
+
+/* camera_movements.c */
+void	ft_move_camera_left(t_init *init, t_game *game, \
+double prevplanex, double oldplanex);
+void	ft_move_camera(t_init *init, t_game *game);
 
 /* textures.c */
 void	ft_check_authorised_char(t_init *init);

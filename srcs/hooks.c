@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 11:12:14 by baubigna          #+#    #+#             */
+/*   Updated: 2022/09/21 11:12:16 by baubigna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
 void	ft_key_hook_moves(int keycode, t_init *init)
@@ -27,9 +39,15 @@ void	ft_key_hook_moves(int keycode, t_init *init)
 void	ft_key_hook_camera(int keycode, t_init *init)
 {
 	if (keycode == CAMERA_R)
+	{
 		init->moves.camera_r = 1;
+		ft_move_camera(init, init->game);
+	}
 	else if (keycode == CAMERA_L)
+	{
 		init->moves.camera_l = 1;
+		ft_move_camera(init, init->game);
+	}
 }
 
 int	ft_key_hook(int keycode, t_init *init)

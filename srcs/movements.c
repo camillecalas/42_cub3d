@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 11:12:49 by baubigna          #+#    #+#             */
+/*   Updated: 2022/09/21 11:12:51 by baubigna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
 void	ft_init_moves(t_init *init)
@@ -7,6 +19,7 @@ void	ft_init_moves(t_init *init)
 	init->moves.move_r = 0;
 	init->moves.move_l = 0;
 	init->game->moveSpeed = 0.1;
+	init->game->rotSpeed = 0.1;
 }
 
 void	ft_move_forward(t_init *init, t_game *game)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 11:12:42 by baubigna          #+#    #+#             */
+/*   Updated: 2022/09/21 11:12:44 by baubigna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
 void	ft_get_textures_address(t_init *init)
@@ -43,6 +55,7 @@ void	ft_load_textures(t_init *init)
 
 void	ft_init_mlx(t_init *init)
 {
+	init->map[(int)init->game->posY][(int)init->game->posX] = '0';
 	init->mlx = mlx_init();
 	if (!init->mlx)
 		ft_error("Error\nCould not initialize mlx\n", init);

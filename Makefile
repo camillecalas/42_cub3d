@@ -10,6 +10,7 @@ SRCS	=	./srcs/check_param.c \
 			./srcs/main.c \
 			./srcs/mlx.c \
 			./srcs/movements.c\
+			./srcs/camera_movements.c\
 			./srcs/map.c \
 			./srcs/hooks.c \
 			./srcs/textures.c
