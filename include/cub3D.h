@@ -6,7 +6,7 @@
 /*   By: ccalas <ccalas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:32:13 by ccalas           ###   ########.fr       */
+/*   Updated: 2022/09/21 12:23:32 by ccalas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,8 @@ typedef struct s_init
 void	ft_check_direction(t_init *init);
 int		ft_check_scene(char *scene);
 void	ft_ignore_spaces_and_comma(char *line, size_t *i, t_init *init);
-void	ft_check_color_parameters(char *line, t_init *init);
-int		ft_check_color(char *line, size_t *i, t_init *init);
+void	ft_check_color_parameters(char *line, t_init *init, char **elements);
+int		ft_check_color(char *line, size_t *i, t_init *init, char **elements);
 
 /* clean.c */
 void	ft_free_split(char **split);
