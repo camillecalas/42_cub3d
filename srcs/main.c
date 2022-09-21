@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:32 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 16:13:48 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:51:46 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_open_map_file(char *filepath, t_init *init)
 
 	init->n = 0;
 	ft_open_fd(filepath, init);
-	line = get_next_line(init->fd);
+	line = get_next_line(init->fd, 0);
 	while (line)
 	{
 		init->n++;
@@ -45,13 +45,13 @@ void	ft_open_map_file(char *filepath, t_init *init)
 		{
 			if (line)
 				free(line);
-			line = get_next_line(init->fd);
+			line = get_next_line(init->fd, 0);
 			continue ;
 		}
 		ft_get_map_info(line, init);
 		if (line)
 			free(line);
-		line = get_next_line(init->fd);
+		line = get_next_line(init->fd, 0);
 	}
 	ft_check_empty_line(line, init);
 	if (line)

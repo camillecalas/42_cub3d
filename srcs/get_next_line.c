@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:08 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:43:27 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:53:14 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*ft_read_fd(int fd, char *line_wip)
 	return (line_wip);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int close)
 {
 	char		*line;
 	static char	*line_wip;
@@ -102,5 +102,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_line(line_wip);
 	line_wip = ft_new_start(line_wip);
+	if (close)
+	{
+		if (line_wip)
+			free(line_wip);
+		if (line)
+			free(line);
+	}
 	return (line);
 }

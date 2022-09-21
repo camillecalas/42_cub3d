@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:36 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:48:23 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:51:55 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ void	ft_cpy_map_lines(char *filepath, int fd, int nb, t_init *init)
 	{
 		if (line)
 			free(line);
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 	}
 	if (line)
 		free(line);
-	line = get_next_line(fd);
+	line = get_next_line(fd, 0);
 	while (nb--)
 	{
 		if (line)
 			init->map[i++] = ft_strndup(line, 0, ft_strlen(line));
 		if (line)
 			free(line);
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 	}
 	if (line)
 		free(line);
@@ -103,7 +103,7 @@ void	ft_cpy_map(int fd, t_init *init, char *filepath)
 		if (line)
 			free(line);
 		nb++;
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 		if (!line)
 			break ;
 	}

@@ -17,7 +17,7 @@ SRCS	=	./srcs/check_param.c \
 
 OBJS	=	${SRCS:.c=.o}
 CC		=	clang
-FLAGS	=	-Wall -Werror -Wextra
+FLAGS	=	-Wall -Werror -Wextra -g3
 
 INCS	= -I ./includes -I ./libft/includes -I ./mlx
 LIBC	= ./mlx/libmlx.a ./libft/libft.a

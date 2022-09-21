@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:34 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 15:48:39 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:52:10 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ char	*ft_strjoin2(char *line_wip, char *buff);
 char	*ft_line(char *line_wip);
 char	*ft_new_start(char	*line_wip);
 char	*ft_read_fd(int fd, char *line_wip);
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int close);
 
 /* init.c */
 void	ft_init_plane(t_init *init, char c);

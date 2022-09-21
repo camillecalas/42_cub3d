@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:51 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 14:19:24 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:52:38 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	ft_clean_all(t_init *init)
 
 void	ft_error(char *msg, t_init *init)
 {
+	get_next_line(init->fd, 1);
 	ft_putstr_fd(msg, 2);
 	ft_clean_all(init);
 }
