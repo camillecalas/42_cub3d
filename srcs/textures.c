@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:54 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 11:58:27 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:12:23 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,39 @@ void	ft_check_map_line(t_init *init, int i, int j)
 	{
 		while (i2 >= 0 && init->map[i2] && init->map[i2][j]
 			&& init->map[i2][j] == '0')
-	// while (i2 >= 0 && init->map[i2][j] != '1' && init->map[i2][j] != ' '
-	// 	&& ft_strcmp(init->map[i2], ""))
-			i2--;
-		if (i2 < 0 || ((init->map[i2] && init->map[i2][j] 
-			&& init->map[i2][j] == ' ') || (init->map[i2]
-			&& !ft_strcmp(init->map[i2], ""))) || (init->map[i2]
-			&& !init->map[i2][j]))
+			i2 --;
+		if (i2 < 0 || (init->map[i2] && !init->map[i2][j])
+			|| (init->map[i2] && init->map[i2][j] && init->map[i2][j] != '1'))
 			ft_error("Error\nMap not closed\n", init);
 		i2 = i;
-		while (init->map[i2] && init->map[i2][j] && init->map[i2][j] == '0')
-	// while (init->map[i2][j] != '1' && init->map[i2][j] != ' '
-	// 	&& ft_strcmp(init->map[i2], ""))
+		while (init->map[i2] && init->map[i2][j])
 			i2++;
-		if ((init->map[i2] && !init->map[i2][j]) || (init->map[i2]
-			&& init->map[i2][j] && init->map[i2][j] == ' ') || (init->map[i2]
-			&& !ft_strcmp(init->map[i2], "")))
+		if (!init->map[i2] || (init->map[i2] && !init->map[i2][j])
+			|| (init->map[i2] && init->map[i2][j] && init->map[i2][j] != '1'))
 			ft_error("Error\nMap not closed\n", init);
 	}
+	// if (init->map)
+	// {
+	// 	while (i2 >= 0 && init->map[i2] && init->map[i2][j]
+	// 		&& init->map[i2][j] == '0')
+	// // while (i2 >= 0 && init->map[i2][j] != '1' && init->map[i2][j] != ' '
+	// // 	&& ft_strcmp(init->map[i2], ""))
+	// 		i2--;
+	// 	if (i2 < 0 || ((init->map[i2] && init->map[i2][j] 
+	// 		&& init->map[i2][j] == ' ') || (init->map[i2]
+	// 		&& !ft_strcmp(init->map[i2], ""))) || (init->map[i2]
+	// 		&& !init->map[i2][j]))
+	// 		ft_error("Error\nMap not closed\n", init);
+	// 	i2 = i;
+	// 	while (init->map[i2] && init->map[i2][j] && init->map[i2][j] == '0')
+	// // while (init->map[i2][j] != '1' && init->map[i2][j] != ' '
+	// // 	&& ft_strcmp(init->map[i2], ""))
+	// 		i2++;
+	// 	if ((init->map[i2] && !init->map[i2][j]) || (init->map[i2]
+	// 		&& init->map[i2][j] && init->map[i2][j] == ' ') || (init->map[i2]
+	// 		&& !ft_strcmp(init->map[i2], "")))
+	// 		ft_error("Error\nMap not closed\n", init);
+	// }
 }
 
 void	ft_orientation_id_cmp(char **elements, t_init *init, char *line)
