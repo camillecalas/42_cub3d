@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:12:32 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 14:51:54 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:08:56 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ void	ft_open_map_file(char *filepath, t_init *init)
 		if (line)
 			free(line);
 		line = get_next_line(init->fd);
+	}
+	if (line && ft_strlen(line) != 1)
+	{
+		if (line)
+			free(line);
+		ft_error("Error\nInvalid map informations\n", init);
 	}
 	if (line)
 		free(line);
