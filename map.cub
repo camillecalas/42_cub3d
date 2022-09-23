@@ -4,8 +4,8 @@ EA ./textures/bluestone.xpm
 WE ./textures/colorstone.xpm
 
 
-F 0,53,100
-C 51,185,200
+F 255,0,0
+         C         0   ,     00000    ,     255    
 
 
 11111111111

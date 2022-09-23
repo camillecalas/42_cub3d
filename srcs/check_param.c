@@ -6,7 +6,7 @@
 /*   By: baubigna <baubigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:11:47 by baubigna          #+#    #+#             */
-/*   Updated: 2022/09/21 16:15:38 by baubigna         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:07:46 by baubigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,16 @@ char **elements)
 void	ft_check_color_parameters(char *line, t_init *init, char **elements)
 {
 	size_t	i;
+	size_t	j;
 	int		r;
 	int		g;
 	int		b;
 
-	i = 1;
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	j = i;
+	i++;
 	while (i < ft_strlen(line))
 	{
 		while (line[i] == ' ')
@@ -86,12 +91,14 @@ void	ft_check_color_parameters(char *line, t_init *init, char **elements)
 		g = ft_check_color(line, &i, init, elements);
 		ft_ignore_spaces_and_comma(line, &i, init, elements);
 		b = ft_check_color(line, &i, init, elements);
-		if (line[i] != '\n' && line[i] != '\0')
+		while (line[i] == ' ')
+			i++;
+		if (line[i] && line[i] != '\n')
 			ft_free_col_param(line, elements, init);
 		else
 			break ;
 	}
-	if (line[0] == 'C')
+	if (line[j] == 'C')
 		init->ceiling_hexa = ft_color_convert(r, g, b);
 	else
 		init->floor_hexa = ft_color_convert(r, g, b);
