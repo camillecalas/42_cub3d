@@ -1,4 +1,4 @@
-# cub3d
+# 42_cub3d
 
 TO DO:
 
